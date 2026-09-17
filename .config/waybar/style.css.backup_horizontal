@@ -1,0 +1,107 @@
+@import "./colors-active.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* --- Single bar --- */
+
+window#waybar {
+  background-color: @bg;
+  color: @fg;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+}
+
+/* --- Three islands --- */
+/*
+window#waybar {
+  background-color: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background-color: @bg;
+  border: 0px solid @fg;
+  border-radius: 0;
+  padding: 0 10px;
+  color: @fg;
+}
+*/
+/* Workspaces */
+#workspaces button {
+  color: @fg;
+  background: transparent;
+  padding: 4 8px;
+}
+
+#workspaces button.active {
+  background-color: @fg;
+  color: @bg;
+  border-radius: 0px;
+}
+
+#workspaces button:hover {
+  background-color: @fg;
+  color: @bg;
+  border-radius: 0px;
+}
+
+/* Module padding */
+#clock,
+#battery,
+#pulseaudio,
+#backlight,
+#network,
+#custom-power {
+  padding: 0 8px;
+}
+
+/* Battery thresholds */
+#battery.warning {
+  color: yellow;
+}
+
+#battery.critical {
+  color: @red;
+  animation: blink 1s linear infinite;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Power-profiles MAGI mode colors */
+#power-profiles-daemon.balanced {
+  background-color: @fg;
+  color: @black;
+}
+#power-profiles-daemon.performance {
+  background-color: @red;
+  color: @black;
+}
+#power-profiles-daemon.power-saver {
+  background-color: @green;
+  color: @black;
+}

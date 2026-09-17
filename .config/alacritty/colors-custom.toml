@@ -1,0 +1,31 @@
+[colors.primary]
+background = '#000000'
+foreground = '#e8d8c9'
+
+[colors.cursor]
+text = '#000000'
+cursor = '#f3701e'
+
+[colors.normal]
+black   = '#1a1a1a' # Background text
+red     = '#ff3333' # Critical errors
+green   = '#39ff14' # BioSleep Green
+yellow  = '#f3701e' # MAGI Orange (Kept for warnings/variables)
+blue    = '#2e86ab' # Steel Blue
+magenta = '#b82ce6' # Deep Purple (For syntax highlighting)
+cyan    = '#00e5ff' # Muted Aqua (For symlinks/paths)
+white   = '#e8d8c9' # MAGI Beige
+
+[colors.bright]
+black   = '#4b607f' # Subtle gray text
+red     = '#ff5c5c' # Brighter red
+green   = '#66ff4d' # Neon green
+yellow  = '#ff914d' # Brighter orange
+blue    = '#45a5ca' # Brighter steel blue
+magenta = '#d259ff' # Brighter purple
+cyan    = '#33eeff' # Brighter aqua
+white   = '#ffffff' # Brighter beige
+
+[colors.selection]
+text = "#000000"
+background = "#f3701e"

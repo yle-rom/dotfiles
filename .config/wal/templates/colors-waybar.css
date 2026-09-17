@@ -1,0 +1,5 @@
+@define-color bg    {color0};
+@define-color fg    {color3};
+@define-color black {color0};
+@define-color red   {color1};
+@define-color green {color2};

@@ -1,0 +1,91 @@
+@import "./colors-active.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Restores the background to the main continuous bar */
+window#waybar {
+  background-color: @bg;
+  color: @fg;
+  border-radius: 4px;
+  border: 2px solid @fg;
+}
+
+/* --- Workspaces --- */
+#workspaces button {
+  color: @fg;
+  background: transparent;
+  padding: 8px 4px;
+}
+
+#workspaces button.active {
+  background-color: @fg;
+  color: @bg;
+  border-radius: 0px;
+}
+
+#workspaces button:hover {
+  background-color: @fg;
+  color: @bg;
+  border-radius: 0px;
+}
+
+/* Independent modules padding */
+#clock,
+#network,
+#custom-power {
+  padding: 10px 0px;
+}
+
+/* Tightly pack all three parts of the metric together */
+#battery-icon,
+#battery-bar,
+#battery-percentage,
+#backlight-icon,
+#backlight-bar,
+#backlight-percentage,
+#pulseaudio-icon,
+#pulseaudio-bar,
+#pulseaudio-percentage {
+  padding: 2px 0px;
+  background-color: transparent;
+}
+
+/* --- The Foolproof Gap Spacer --- */
+/* Change the padding here to make the gap larger or smaller */
+#custom-spacer {
+  padding: 0px 0px;
+  background-color: transparent;
+}
+
+/* --- Battery thresholds --- */
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.critical {
+  color: @red;
+  animation: blink 1s linear infinite;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

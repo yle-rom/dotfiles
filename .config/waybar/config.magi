@@ -1,0 +1,103 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+    "height": 32,
+    "spacing": 6,
+
+    "modules-left": [
+        "clock",
+        "custom/power",
+        "network",
+        "bluetooth",
+        "custom/lang"
+    ],
+    "modules-center": [
+        "hyprland/workspaces",
+        "power-profiles-daemon"
+    ],
+    "modules-right": [
+        "battery",
+        "pulseaudio",
+        "backlight"
+    ],
+
+    "clock": {
+        "format": "[   {:%I:%M %p} ]",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#f3701e'><b>{}</b></span>",
+                "days": "<span color='#ffffff'><b>{}</b></span>",
+                "today": "<span color='#ff3333'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    
+    "custom/power": {
+        "format": "[ ⏻ ]",
+        "on-click": "~/.config/hypr/scripts/powermenu.sh"
+    },
+    
+    "network": {
+        "format-wifi": "[  ]",
+        "format-disconnected": "[ ⚠ ]",
+        "on-click": "alacritty -e nmtui",
+        "tooltip-format": "{essid} ({signalStrength}%)"
+    },
+    
+    "bluetooth": {
+        "format": "[  ]",
+        "format-connected": "[  ]",
+        "on-click": "blueman-manager",
+        "tooltip-format": "{device_alias}"
+    },
+    
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "persistent-workspaces": {
+            "*": 3
+        },
+        "format-icons": {
+            "1": "[MELCHIOR]",
+            "2": "[BALTHASAR]",
+            "3": "[CASPER]",
+            "default": "[MELCHIOR]"
+        }
+    },
+    
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "MAGI Status: {profile}",
+        "format-icons": {
+            "default": "MAGI: STABLE",
+            "performance": "MAGI: OVERRIDE",
+            "balanced": "MAGI: STABLE",
+            "power-saver": "MAGI: BIOSLEEP"
+        }
+    },
+    
+    "custom/lang": {
+        "exec": "hyprctl devices -j | python3 -c \"import sys,json; d=json.load(sys.stdin); kb=[k for k in d.get('keyboards',[]) if k.get('name','')=='at-translated-set-2-keyboard']; print('[ GRC ]' if kb and kb[0].get('active_keymap','')=='Greek' else '[ ENG ]')\"",
+        "interval": 1,
+        "format": "{}"
+    },
+
+    "battery": {
+        "format": "[    {capacity}% ]",
+        "format-charging": "[    {capacity}% ]"
+    },
+    
+    "pulseaudio": {
+        "format": "[    {volume}% ]",
+        "format-muted": "[    MUTE ]"
+    },
+    
+    "backlight": {
+        "format": "[ 󰃠   {percent}% ]",
+        "format-icons": ["󰃞", "󰃟", "󰃠"]
+    }
+}

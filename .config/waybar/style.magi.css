@@ -1,0 +1,65 @@
+@import "./colors-active.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* Base Modules: Off-White Background / Orange Borders & Text */
+#clock, #custom-power, #network, #bluetooth, #power-profiles-daemon,#custom-lang, #battery, #pulseaudio, #backlight {
+    background-color: @bg;
+    border: 2px solid @fg;
+    color: @fg;
+    border-radius: 2px;
+    margin-top: 4px;
+    padding: 0 10px;
+}
+
+/* --- THE THREE MAGI MODES --- */
+
+/* 1. STABLE MODE - Full Orange (Alert Level: Normal) */
+#power-profiles-daemon.balanced, #power-profiles-daemon.default {
+    background-color: @fg;
+    color: @black;
+    border-color: @fg;
+}
+
+/* 2. OVERRIDE MODE - Pulse Red (Alert Level: Emergency) */
+#power-profiles-daemon.performance {
+    background-color: @red;
+    color: @black;
+    border-color: @red;
+    box-shadow: 0 0 10px @red;
+}
+
+/* 3. BIOSLEEP MODE - Clinical Green (Alert Level: Passive) */
+#power-profiles-daemon.power-saver {
+    background-color: @green;
+    color: @black;
+    border-color: @green;
+}
+
+/* Workspaces - Matching the Off-White/Orange Palette */
+#workspaces button {
+    background-color: @bg;
+    border: 2px solid @fg;
+    color: @fg;
+    border-radius: 2px;
+    margin: 4px 2px 0px 2px;
+}
+
+#workspaces button.active {
+    background-color: @fg;
+    color: @bg;
+    border-color: @fg;
+}
+
+/* Specific module overrides for clarity */
+#clock {
+    font-weight: 900;
+}
