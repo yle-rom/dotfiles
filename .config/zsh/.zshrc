@@ -5,8 +5,7 @@
 HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=5000
 SAVEHIST=5000
-[[ -f ~/.histfile ]] && rm -f ~/.histfile # Claude subshells fall back to ~/.histfile (bash, no .zshenv)
-
+[[ -f ~/.histfile ]] && rm -f ~/.histfile 
 # Prompt
 PROMPT='%K{0}%B%F{3}%n@%m %~ ツ%f%b%E%k '
 
@@ -54,4 +53,8 @@ function cdl() {
 
 function la() {
   ls -la --color=always "$@" | grep -v '^l'
+}
+
+function duh() {
+  sudo du -xh --max-depth=1 "${1:-.}" | sort -rh
 }

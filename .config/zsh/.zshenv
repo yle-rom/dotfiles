@@ -52,13 +52,16 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$CARGO_HOME/bin:$PATH"
 
 # OpenClaude
-export OPENCLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/.config/openclaude"
+#export OPENCLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/.config/openclaude"
 #export CLAUDE_CODE_USE_OPENAI=1
 #export OPENAI_BASE_URL=http://localhost:11434/v1
 #export OPENAI_API_KEY=ollama
 #export OPENAI_MODEL=hermes3:8b
 export SEARXNG_URL="http://localhost:8080"
 export OLLAMA_NUM_CTX=32768
+
+#Claude
+export CLAUDE_CONFIG_DIR=$HOME/.config/claude
 
 # W3M
 export W3M_DIR=$XDG_CONFIG_HOME/w3m
