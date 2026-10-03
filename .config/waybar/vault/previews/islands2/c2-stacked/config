@@ -9,24 +9,16 @@
   "width": 35,
   "spacing": 0,
   "modules-left": [
-    "custom/power",
-    "battery#bar",
-    "battery#icon",
-    "battery#percentage",
-    "pulseaudio#bar",
-    "pulseaudio#icon",
-    "custom/weather"
+    "group/gpower",
+    "group/gbat",
+    "group/gvol",
+    "group/gwx",
+    "group/gclock"
   ],
-  "modules-center": [
-    "custom/blockclock"
-  ],
+  "modules-center": [],
   "modules-right": [
-    "custom/emergency",
-    "custom/cava",
-    "custom/ws1",
-    "custom/ws2",
-    "custom/ws3",
-    "custom/ws4"
+    "group/gcava",
+    "group/gws"
   ],
   "battery#icon": {
     "format": "{icon}",
@@ -81,10 +73,10 @@
   },
   "pulseaudio#icon": {
     "format": "{icon}",
-    "format-muted": "󰀥",
+    "format-muted": "♪",
     "format-icons": {
       "default": [
-        "󰀥"
+        "♪"
       ]
     },
     "on-click": "pavucontrol",
@@ -162,7 +154,7 @@
     "interval": 5
   },
   "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.py --moon",
+    "exec": "~/.config/waybar/scripts/weather.py",
     "return-type": "json",
     "interval": 900,
     "escape": false,
@@ -175,5 +167,54 @@
     "escape": false,
     "justify": "center",
     "on-click": "~/.config/waybar/scripts/calpopup.py"
+  },
+  "group/gpower": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/power"
+    ]
+  },
+  "group/gbat": {
+    "orientation": "inherit",
+    "modules": [
+      "battery#bar",
+      "battery#icon",
+      "battery#percentage"
+    ]
+  },
+  "group/gvol": {
+    "orientation": "inherit",
+    "modules": [
+      "pulseaudio#bar",
+      "pulseaudio#icon"
+    ]
+  },
+  "group/gwx": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/weather"
+    ]
+  },
+  "group/gclock": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/blockclock"
+    ]
+  },
+  "group/gcava": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/emergency",
+      "custom/cava"
+    ]
+  },
+  "group/gws": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/ws1",
+      "custom/ws2",
+      "custom/ws3",
+      "custom/ws4"
+    ]
   }
 }

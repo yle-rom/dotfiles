@@ -1,0 +1,18 @@
+
+(waybar:299210): Gtk-WARNING **: 23:20:27.493: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[2026-10-01 23:20:27.554] [info] Using configuration file nerv3/outline/config
+[2026-10-01 23:20:27.555] [info] Including resource file: ~/.cache/wal/colors-waybar-calendar.json
+[2026-10-01 23:20:27.559] [info] Using CSS file nerv3/outline/style.css
+Discharging
+Discharging
+Discharging
+[2026-10-01 23:20:27.629] [info] Bar configured (width: 35, height: 964) for output: eDP-2
+Discharging
+Discharging
+Discharging
+Discharging
+Discharging
+Discharging
+[2026-10-01 23:23:11.206] [warning] Requested width: 35 is less than the minimum width: 38 required by the modules
+[2026-10-01 23:23:11.206] [info] Bar configured (width: 38, height: 964) for output: eDP-2
+[2026-10-01 23:23:13.780] [info] Bar configured (width: 35, height: 964) for output: eDP-2

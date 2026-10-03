@@ -1,0 +1,35 @@
+#!/bin/bash
+# Usage: kblight ff3c00 [brightness 0-255, default 250]
+
+if [ -z "$1" ]; then
+  echo "Usage: kblight <hex color e.g. ff3c00> [brightness 0-255]"
+  exit 1
+fi
+
+hex="${1#\#}"  # strip leading # if present
+bright="${2:-250}"
+
+if ! [[ "$bright" =~ ^[0-9]+$ ]] || (( bright > 255 )); then
+  echo "Brightness must be 0-255"
+  exit 1
+fi
+
+r=$((16#${hex:0:2}))
+g=$((16#${hex:2:2}))
+b=$((16#${hex:4:2}))
+
+# Check hp_wmi is loaded
+if ! lsmod | grep -q hp_wmi; then
+  echo "hp_wmi not loaded. Run kb-toggle first."
+  exit 1
+fi
+
+for zone in 0 1 2 3; do
+  echo "$bright" | sudo  tee /sys/class/leds/hp::kbd_backlight_zone$zone/brightness > /dev/null
+  echo "$r $g $b" | sudo tee /sys/class/leds/hp::kbd_backlight_zone$zone/multi_intensity > /dev/null
+done
+
+echo "Keyboard set to #${hex} (R:$r G:$g B:$b) brightness $bright"
+
+# Save last color for toggle restore
+echo "$r $g $b" | sudo tee /var/cache/kblight-last > /dev/null

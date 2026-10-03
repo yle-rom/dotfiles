@@ -1,0 +1,2 @@
+@import "../1-big/style.css";
+#clock.hour, #clock.min { font-family: "Share Tech Mono"; font-size: 23px; }

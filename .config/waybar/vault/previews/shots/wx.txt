@@ -1,0 +1,5 @@
+                 sun  night  partly cloud  fog  rain  pour  snow  storm
+A current (MD)   󰖙    󰖔    󰖕    󰖐    󰖑    󰖗    󰖖    󰖘    󰖓
+B weather-icons                                  
+C outline (MD)   󰖙    󰼶    󰼯    󰼯    󰖑    󰼳    󰼳    󰼴    󰼲
+D unicode        ☀    ☾    ⛅    ☁    ▒    ☂    ☔    ❄    ⚡

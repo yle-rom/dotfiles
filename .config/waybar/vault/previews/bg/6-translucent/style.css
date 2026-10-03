@@ -1,0 +1,2 @@
+@import "../../../../style.css";
+window#waybar { background-color: alpha(@bg, 0.55); }

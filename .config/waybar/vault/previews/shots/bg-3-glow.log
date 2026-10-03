@@ -1,0 +1,8 @@
+
+(waybar:326414): Gtk-WARNING **: 00:30:02.925: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[2026-10-02 00:30:02.949] [info] Using configuration file bg/3-glow/config
+[2026-10-02 00:30:02.952] [info] Using CSS file bg/3-glow/style.css
+Charging
+Charging
+Charging
+[2026-10-02 00:30:02.993] [info] Bar configured (width: 35, height: 964) for output: eDP-2

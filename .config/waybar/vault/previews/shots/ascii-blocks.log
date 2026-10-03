@@ -1,0 +1,9 @@
+
+(waybar:320218): Gtk-WARNING **: 00:14:02.608: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[2026-10-02 00:14:02.633] [info] Using configuration file ascii/blocks/config
+[2026-10-02 00:14:02.633] [info] Including resource file: ~/.cache/wal/colors-waybar-calendar.json
+[2026-10-02 00:14:02.637] [info] Using CSS file ascii/blocks/style.css
+Charging
+Charging
+Charging
+[2026-10-02 00:14:02.685] [info] Bar configured (width: 35, height: 964) for output: eDP-2

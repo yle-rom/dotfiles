@@ -1,0 +1,3 @@
+@import "../../../../style.css";
+window#waybar { background-image: radial-gradient(circle, alpha(@fg, 0.22) 0.8px, transparent 1.3px);
+  background-size: 5px 5px; background-repeat: repeat; }

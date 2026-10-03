@@ -1,0 +1,23 @@
+@import "../../nerv2/style.css";
+
+/* icons: Mono nerd font = one cell wide = actually centered */
+#battery-icon, #pulseaudio-icon {
+  font-family: "JetBrainsMono NFM";
+  font-size: 15px;
+  padding: 4px 0 2px 0;
+}
+#battery-percentage, #pulseaudio-percentage { padding: 0 0 4px 0; }
+#battery-bar, #pulseaudio-bar {
+  border-style: solid;
+  border-width: 1px;
+  border-color: @fg;
+  margin: 0 6px;
+  padding: 3px 2px;
+}
+#battery-icon, #pulseaudio-icon {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: alpha(@fg, 0.7);
+  padding: 4px 0;
+}

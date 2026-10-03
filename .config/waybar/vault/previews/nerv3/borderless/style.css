@@ -1,0 +1,10 @@
+@import "../../nerv2/style.css";
+
+window#waybar { border: none; border-radius: 0; background-color: alpha(@bg, 0.92); }
+
+#clock { background: transparent; color: @fg; margin: 0 6px; }
+#clock.date { border-top: 1px solid alpha(@fg, 0.5); border-bottom: none; }
+#clock.time { border-bottom: 1px solid alpha(@fg, 0.5); color: mix(@fg, white, 0.25); }
+
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4 { border-top: none; border-right: 3px solid transparent; }
+#custom-ws1.active, #custom-ws2.active, #custom-ws3.active, #custom-ws4.active { background: transparent; color: mix(@fg, white, 0.35); border-right: 3px solid @fg; }

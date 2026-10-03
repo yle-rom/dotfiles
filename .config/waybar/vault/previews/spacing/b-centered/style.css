@@ -1,0 +1,7 @@
+@import "../../../../style.css";
+/* one gap (16px) between every section, small fixed gaps inside a section */
+#battery.bar      { padding-top: 16px; }
+#pulseaudio.bar   { padding-top: 16px; }
+#battery.icon, #pulseaudio.icon { padding: 4px 0 0 0; }
+#battery.percentage { padding: 0; }
+#custom-weather   { padding: 16px 0 0 0; }

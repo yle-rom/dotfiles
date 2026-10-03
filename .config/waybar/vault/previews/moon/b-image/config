@@ -15,6 +15,7 @@
     "battery#percentage",
     "pulseaudio#bar",
     "pulseaudio#icon",
+    "image#moon",
     "custom/weather"
   ],
   "modules-center": [
@@ -162,7 +163,7 @@
     "interval": 5
   },
   "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.py --moon",
+    "exec": "~/.config/waybar/scripts/weather.py --no-icon",
     "return-type": "json",
     "interval": 900,
     "escape": false,
@@ -175,5 +176,10 @@
     "escape": false,
     "justify": "center",
     "on-click": "~/.config/waybar/scripts/calpopup.py"
+  },
+  "image#moon": {
+    "exec": "~/.config/waybar/scripts/moon.py image",
+    "size": 22,
+    "interval": 3600
   }
 }

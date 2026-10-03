@@ -81,10 +81,10 @@
   },
   "pulseaudio#icon": {
     "format": "{icon}",
-    "format-muted": "󰀥",
+    "format-muted": "♪",
     "format-icons": {
       "default": [
-        "󰀥"
+        "♪"
       ]
     },
     "on-click": "pavucontrol",
@@ -162,7 +162,7 @@
     "interval": 5
   },
   "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.py --moon",
+    "exec": "~/.config/waybar/scripts/weather.py",
     "return-type": "json",
     "interval": 900,
     "escape": false,

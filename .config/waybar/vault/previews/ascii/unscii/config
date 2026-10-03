@@ -1,4 +1,7 @@
 {
+  "include": [
+    "~/.cache/wal/colors-waybar-calendar.json"
+  ],
   "reload_style_on_change": true,
   "layer": "top",
   "position": "left",
@@ -13,12 +16,15 @@
     "battery#bar",
     "battery#icon",
     "battery#percentage",
+    "custom/spacer",
     "pulseaudio#bar",
     "pulseaudio#icon",
+    "custom/spacer",
     "custom/weather"
   ],
   "modules-center": [
-    "custom/blockclock"
+    "clock#hour",
+    "clock#min"
   ],
   "modules-right": [
     "custom/emergency",
@@ -81,10 +87,10 @@
   },
   "pulseaudio#icon": {
     "format": "{icon}",
-    "format-muted": "󰀥",
+    "format-muted": "󰍴",
     "format-icons": {
       "default": [
-        "󰀥"
+        "󰥛"
       ]
     },
     "on-click": "pavucontrol",
@@ -126,6 +132,10 @@
     "on-click": "~/.local/bin/powermenu",
     "tooltip": false
   },
+  "custom/spacer": {
+    "format": " ",
+    "tooltip": false
+  },
   "custom/ws1": {
     "exec": "~/.config/waybar/scripts/workspaces.py 1",
     "return-type": "json",
@@ -161,19 +171,54 @@
     "return-type": "json",
     "interval": 5
   },
+  "clock#date": {
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "on-click": "~/.config/waybar/scripts/calpopup.py",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    },
+    "format": "{:%d.%m}"
+  },
+  "clock#hour": {
+    "format": "{:%H}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "on-click": "~/.config/waybar/scripts/calpopup.py",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "clock#min": {
+    "format": "{:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "on-click": "~/.config/waybar/scripts/calpopup.py",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
   "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.py --moon",
+    "exec": "~/.config/waybar/scripts/weather.py",
     "return-type": "json",
     "interval": 900,
     "escape": false,
     "justify": "center",
     "on-click": "xdg-open https://wttr.in"
-  },
-  "custom/blockclock": {
-    "exec": "~/.config/waybar/scripts/blockclock.py",
-    "return-type": "json",
-    "escape": false,
-    "justify": "center",
-    "on-click": "~/.config/waybar/scripts/calpopup.py"
   }
 }

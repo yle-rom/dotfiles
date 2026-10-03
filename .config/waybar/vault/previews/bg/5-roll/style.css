@@ -1,0 +1,10 @@
+@import "../../../../style.css";
+window#waybar {
+  background-image: repeating-linear-gradient(to bottom,
+    alpha(@fg, 0.10) 0px, alpha(@fg, 0.10) 1px, transparent 1px, transparent 3px),
+    linear-gradient(to bottom, transparent 0%, alpha(@fg, 0.14) 50%, transparent 100%);
+  background-size: 100% 3px, 100% 180px;
+  background-repeat: repeat, no-repeat;
+  animation: roll 8s linear infinite;
+}
+@keyframes roll { from { background-position: 0 0, 0 -180px; } to { background-position: 0 0, 0 1000px; } }

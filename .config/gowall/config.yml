@@ -1,0 +1,12 @@
+# gowall custom palettes — `gowall list` to see them, `gowall convert <img> -t spotify`
+themes:
+  - name: "spotify"            # spicetify marketplace / Spotify scheme (= rice custom palette)
+    colors:
+      - "#2C2A24"   # main background
+      - "#3A372F"   # highlight
+      - "#DDD5C4"   # text
+      - "#D08B57"   # accent
+      - "#A0907A"   # subtext
+      - "#BFAA80"   # gold
+      - "#7699A3"   # teal
+      - "#B05A5A"   # red

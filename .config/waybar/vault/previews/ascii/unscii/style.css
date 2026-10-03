@@ -1,0 +1,2 @@
+@import "../../../../style.css";
+#clock.hour, #clock.min { font-family: "unscii"; font-size: 20px; text-shadow: none; }

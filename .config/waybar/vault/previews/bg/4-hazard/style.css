@@ -1,0 +1,3 @@
+@import "../../../../style.css";
+window#waybar { background-image: repeating-linear-gradient(45deg,
+  alpha(@fg, 0.06) 0px, alpha(@fg, 0.06) 6px, transparent 6px, transparent 12px); }

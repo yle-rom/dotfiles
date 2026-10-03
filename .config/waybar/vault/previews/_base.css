@@ -1,0 +1,24 @@
+/* shared bits for previews — same layout as the live bar */
+@import "../colors-active.css";
+@define-color yellow mix(@fg, #d7b921, 0.5);
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP", monospace;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+#clock, #network, #custom-power { padding: 10px 0px; }
+#workspaces button { border-radius: 0; min-width: 0; }
+#battery.icon, #battery.bar, #battery.percentage,
+#backlight.icon, #backlight.bar, #backlight.percentage,
+#pulseaudio.icon, #pulseaudio.bar, #pulseaudio.percentage {
+  padding: 2px 0px;
+  background-color: transparent;
+}
+#battery.warning { color: @yellow; }
+#battery.critical { color: @red; animation: blink 1s linear infinite; }
+#battery.charging { color: @green; }
+@keyframes blink { 50% { opacity: 0; } }

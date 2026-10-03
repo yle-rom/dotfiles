@@ -1,0 +1,8 @@
+A level fill    󰁺  󰁼  󰁾  󰂀  󰂂  󰁹  󰂄
+B 3-segment     󱊡  󱊢  󱊣  󰂃
+C outline+bolt  󰂎  󱐋  󰚥
+D heart HP      󰋕  󰛟  󰋑
+E vol levels    󰕿  󰖀  󰕾  󰝟  󰖁
+F devices       󰋋  󰋎  󰓃  󰍹
+G music         󰝚  󰎈  󱑽  󰺢
+H fa vol              

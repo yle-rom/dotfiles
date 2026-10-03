@@ -1,0 +1,35 @@
+#!/bin/bash
+# ─────────────────────────────────────────
+#  MAGI POWER PROFILE — Rofi Menu
+#  NERV Central Dogma
+#  Look + colors: ~/.config/waybar/scripts/menu-theme.sh (follows the bar / pywal)
+# ─────────────────────────────────────────
+source ~/.config/waybar/scripts/menu-theme.sh
+
+# Current EPP state (the active profile gets a ● and is shown brighter)
+current=$(cat /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference 2>/dev/null)
+
+powersaver="󰌪   POWER SAVER"
+balanced="󰾅   BALANCED"
+performance="󰓅   PERFORMANCE"
+cancel="✕   CANCEL"
+
+active=""
+case "$current" in
+  "power")               powersaver="${powersaver}  ●";   active="-a 0" ;;
+  "balance_performance") balanced="${balanced}  ●";       active="-a 1" ;;
+  "performance")         performance="${performance}  ●"; active="-a 2" ;;
+esac
+
+chosen=$(printf '%s\n' "$powersaver" "$balanced" "$performance" "$cancel" | rofi \
+  -dmenu -i -no-custom \
+  -p "MAGI POWER PROFILE" \
+  $active \
+  -theme-str "$(menu_theme 4)")
+
+case "$chosen" in
+  "$powersaver")  sudo /home/ely/.local/bin/set-epp powersaver ;;
+  "$balanced")    sudo /home/ely/.local/bin/set-epp balanced ;;
+  "$performance") sudo /home/ely/.local/bin/set-epp performance ;;
+  "$cancel"|"")   exit 0 ;;
+esac

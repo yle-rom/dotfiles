@@ -1,0 +1,16 @@
+@import "../../../../style.css";
+window#waybar { background: transparent; border: none; }
+#gpower, #gbat, #gvol, #gwx, #gclock, #gcava, #gws {
+  background-color: @bg;
+  border: 1px solid alpha(@fg, 0.6);
+  margin-bottom: 8px;
+}
+#gws, #gcava { margin-bottom: 0; }
+#gcava { margin-bottom: 8px; padding: 4px 0; }
+#gbat, #gvol { padding-bottom: 6px; }
+#gwx { padding-bottom: 6px; }
+#gclock { padding: 4px 0; }
+#gpower { border-color: @fg; }
+#custom-power { box-shadow: none; border-bottom: none; }
+#battery.bar, #pulseaudio.bar { padding-top: 8px; }
+#custom-weather { padding-top: 8px; }

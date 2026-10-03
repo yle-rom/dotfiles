@@ -1,0 +1,32 @@
+anchor=top-right
+margin=10
+width=320
+height=100
+border-size=2
+border-radius=8
+default-timeout=3000
+font=JetBrainsMono Nerd Font 10
+
+background-color=#2C2A24
+text-color=#D08B57
+border-color=#a0907a
+progress-color=over #ebdbb2
+
+[urgency=low]
+border-color=#a0907a
+text-color=#d79921
+background-color=#2C2A24
+
+[urgency=normal]
+border-color=#a0907a
+background-color=#2C2A24
+text-color=#D08B57
+
+[urgency=critical]
+border-color=#a0907a
+background-color=#2C2A24
+text-color=#fb4934
+default-timeout=5000
+
+[app-name="Firefox"]
+invisible=1

@@ -1,0 +1,185 @@
+{
+  "include": [
+    "~/.cache/wal/colors-waybar-calendar.json"
+  ],
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "left",
+  "margin-top": 18,
+  "margin-bottom": 18,
+  "margin-left": 17,
+  "margin-right": 0,
+  "width": 35,
+  "spacing": 0,
+  "modules-left": [
+    "custom/power",
+    "battery#percentage",
+    "battery#bar",
+    "battery#icon",
+    "custom/spacer",
+    "pulseaudio#percentage",
+    "pulseaudio#bar",
+    "pulseaudio#icon",
+    "custom/spacer"
+  ],
+  "modules-center": [
+    "clock#date",
+    "clock#time"
+  ],
+  "modules-right": [
+    "custom/emergency",
+    "custom/cava",
+    "custom/ws1",
+    "custom/ws2",
+    "custom/ws3",
+    "custom/ws4"
+  ],
+  "battery#icon": {
+    "format": "{icon}",
+    "format-charging": "CHG",
+    "format-icons": [
+      "BAT"
+    ],
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "on-click": "~/.local/bin/powerprofile-menu",
+    "justify": "center"
+  },
+  "battery#bar": {
+    "rotate": 90,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon}",
+    "format-charging": "{icon}",
+    "format-icons": [
+      "<span alpha='35%'>░░░░░░░░░░</span>",
+      "█<span alpha='35%'>░░░░░░░░░</span>",
+      "██<span alpha='35%'>░░░░░░░░</span>",
+      "███<span alpha='35%'>░░░░░░░</span>",
+      "████<span alpha='35%'>░░░░░░</span>",
+      "█████<span alpha='35%'>░░░░░</span>",
+      "██████<span alpha='35%'>░░░░</span>",
+      "███████<span alpha='35%'>░░░</span>",
+      "████████<span alpha='35%'>░░</span>",
+      "█████████<span alpha='35%'>░</span>",
+      "██████████"
+    ],
+    "on-click": "~/.local/bin/powerprofile-menu",
+    "justify": "center"
+  },
+  "battery#percentage": {
+    "format": "{capacity}",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "on-click": "~/.local/bin/powerprofile-menu",
+    "justify": "center"
+  },
+  "pulseaudio#icon": {
+    "format": "{icon}",
+    "format-muted": "MUTE",
+    "format-icons": {
+      "default": [
+        "VOL"
+      ]
+    },
+    "on-click": "pavucontrol",
+    "justify": "center"
+  },
+  "pulseaudio#bar": {
+    "rotate": 90,
+    "format": "{icon}",
+    "format-muted": "<span alpha='35%'>░░░░░░░░░░</span>",
+    "format-icons": {
+      "default": [
+        "<span alpha='35%'>░░░░░░░░░░</span>",
+        "█<span alpha='35%'>░░░░░░░░░</span>",
+        "██<span alpha='35%'>░░░░░░░░</span>",
+        "███<span alpha='35%'>░░░░░░░</span>",
+        "████<span alpha='35%'>░░░░░░</span>",
+        "█████<span alpha='35%'>░░░░░</span>",
+        "██████<span alpha='35%'>░░░░</span>",
+        "███████<span alpha='35%'>░░░</span>",
+        "████████<span alpha='35%'>░░</span>",
+        "█████████<span alpha='35%'>░</span>",
+        "██████████"
+      ]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "justify": "center"
+  },
+  "pulseaudio#percentage": {
+    "format": "{volume}",
+    "format-muted": "0",
+    "on-click": "pavucontrol",
+    "justify": "center"
+  },
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "~/.local/bin/powermenu",
+    "tooltip": false
+  },
+  "custom/spacer": {
+    "format": " ",
+    "tooltip": false
+  },
+  "custom/ws1": {
+    "exec": "~/.config/waybar/previews/nerv2/workspaces.py 1",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 1 })'"
+  },
+  "custom/ws2": {
+    "exec": "~/.config/waybar/previews/nerv2/workspaces.py 2",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 2 })'"
+  },
+  "custom/ws3": {
+    "exec": "~/.config/waybar/previews/nerv2/workspaces.py 3",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 3 })'"
+  },
+  "custom/ws4": {
+    "exec": "~/.config/waybar/previews/nerv2/workspaces.py 4",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 4 })'"
+  },
+  "custom/cava": {
+    "exec": "~/.config/waybar/previews/nerv2/cava.py",
+    "return-type": "json",
+    "rotate": 90,
+    "tooltip": false
+  },
+  "custom/emergency": {
+    "exec": "~/.config/waybar/previews/nerv2/emergency.sh",
+    "return-type": "json",
+    "interval": 5
+  },
+  "clock#date": {
+    "format": "{:%e\n%b}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "on-click": "~/.config/waybar/previews/nerv2/calendar.py",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "clock#time": {
+    "format": "{:%H\n──\n%M}",
+    "tooltip-format": "{:%H:%M · %Z}"
+  }
+}

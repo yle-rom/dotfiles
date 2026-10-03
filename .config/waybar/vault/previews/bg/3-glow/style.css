@@ -1,0 +1,4 @@
+@import "../../../../style.css";
+window#waybar { background-image: linear-gradient(to bottom,
+  alpha(@fg, 0.16) 0%, transparent 25%, transparent 75%, alpha(@fg, 0.16) 100%),
+  linear-gradient(to right, transparent 0%, alpha(@fg, 0.06) 50%, transparent 100%); }

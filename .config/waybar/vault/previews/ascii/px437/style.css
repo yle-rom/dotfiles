@@ -1,0 +1,3 @@
+@import "../../../../style.css";
+/* 8x16 VGA font: 20px x 1.6 scale = 32px = exactly 2x its grid */
+#clock.hour, #clock.min { font-family: "Px437 IBM VGA 8x16"; font-size: 20px; text-shadow: none; }

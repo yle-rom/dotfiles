@@ -1,0 +1,2 @@
+
+(calendar.py:303661): Gtk-WARNING **: 23:34:30.441: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name

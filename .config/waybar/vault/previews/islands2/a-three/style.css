@@ -1,0 +1,10 @@
+@import "../../../../style.css";
+window#waybar { background: transparent; border: none; }
+.modules-left, .modules-center, .modules-right {
+  background-color: @bg;
+  border: 1px solid alpha(@fg, 0.6);
+  padding-bottom: 8px;
+}
+.modules-center { padding: 4px 0; }
+.modules-right  { padding-bottom: 0; }
+#custom-power { box-shadow: none; border-bottom: none; }

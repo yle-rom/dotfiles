@@ -1,0 +1,6 @@
+@import "../../nerv2/style.css";
+#clock, #custom-week, #custom-ruler { border: none; margin: 0; padding: 0; background: transparent; color: @fg; }
+#clock.date, #clock.time { border: none; }
+#clock.hour { font-size: 20px; color: mix(@fg, white, 0.35); }
+#clock.min  { font-size: 20px; padding-bottom: 10px; }
+#custom-week { font-size: 12px; }

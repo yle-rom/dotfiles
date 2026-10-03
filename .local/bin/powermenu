@@ -1,0 +1,29 @@
+#!/bin/bash
+# ─────────────────────────────────────────
+#  MAGI POWER CONTROL — Rofi Powermenu
+#  NERV Central Dogma
+#  Look + colors: ~/.config/waybar/scripts/menu-theme.sh (follows the bar / pywal)
+# ─────────────────────────────────────────
+source ~/.config/waybar/scripts/menu-theme.sh
+
+shutdown="⏻   SHUTDOWN"
+reboot="󰜉   REBOOT"
+#lock="   LOCK"
+cancel="✕   CANCEL"
+
+# -u 0: shutdown is "urgent" → highlighted in red when selected
+chosen=$(printf '%s\n' "$shutdown" "$reboot" "$cancel" | rofi \
+  -dmenu -i -no-custom \
+  -p "MAGI POWER CONTROL" \
+  -u 0 \
+  -theme-str "$(menu_theme 3)")
+
+case "$chosen" in
+  "$shutdown")  systemctl poweroff ;;
+  "$reboot")    systemctl reboot ;;
+  #"$lock")
+  #  if command -v hyprlock &>/dev/null; then hyprlock
+  #  elif command -v swaylock &>/dev/null; then swaylock
+  #  else loginctl lock-session; fi ;;
+  "$cancel"|"") exit 0 ;;
+esac

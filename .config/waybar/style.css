@@ -1,7 +1,11 @@
-@import "./colors-active.css";
+/* NERV bar. Colors: colors-active.css (pywal, or colors-custom.css via `rice`). */
+@import "colors-active.css";
+@import "emergency.css";   /* swapped by scripts/emergency.sh: empty normally, red palette in an emergency */
+
+@define-color yellow mix(@fg, #d7b921, 0.5);
 
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP", monospace;
   font-size: 12px;
   font-weight: bold;
   border: none;
@@ -9,83 +13,117 @@
   box-shadow: none;
 }
 
-/* Restores the background to the main continuous bar */
-window#waybar {
-  background-color: @bg;
-  color: @fg;
-  border-radius: 4px;
-  border: 2px solid @fg;
-}
-
-/* --- Workspaces --- */
-#workspaces button {
-  color: @fg;
-  background: transparent;
-  padding: 8px 4px;
-}
-
-#workspaces button.active {
-  background-color: @fg;
-  color: @bg;
-  border-radius: 0px;
-}
-
-#workspaces button:hover {
-  background-color: @fg;
-  color: @bg;
-  border-radius: 0px;
-}
-
-/* Independent modules padding */
-#clock,
-#network,
-#custom-power {
-  padding: 10px 0px;
-}
-
-/* Tightly pack all three parts of the metric together */
-#battery-icon,
-#battery-bar,
-#battery-percentage,
-#backlight-icon,
-#backlight-bar,
-#backlight-percentage,
-#pulseaudio-icon,
-#pulseaudio-bar,
-#pulseaudio-percentage {
+#battery.icon, #battery.bar, #battery.percentage,
+#pulseaudio.icon, #pulseaudio.bar {
   padding: 2px 0px;
   background-color: transparent;
 }
+#battery.warning { color: @yellow; }
+#battery.critical { color: @red; animation: blink 1s linear infinite; }
+#battery.charging { color: @green; }
+@keyframes blink { 50% { opacity: 0; } }
 
-/* --- The Foolproof Gap Spacer --- */
-/* Change the padding here to make the gap larger or smaller */
-#custom-spacer {
-  padding: 0px 0px;
-  background-color: transparent;
+window#waybar {
+  color: @fg;
+  background-color: @bg;
+  border: 1px solid alpha(@fg, 0.6);
+  border-radius: 0;
 }
 
-/* --- Battery thresholds --- */
-#battery.warning {
-  color: @yellow;
+#custom-power {
+  font-family: "JetBrainsMono NFM";
+  font-size: 20px;
+  color: @fg;                    /* same as the clock */
+  background: transparent;
+  padding: 10px 0 0 0;
+}
+#custom-power:hover { color: @red; }
+/* --- battery / volume meters --- */
+/* one 16px gap between sections; groups (bar, icon, number) sit tight */
+#battery.bar, #pulseaudio.bar { padding-top: 16px; }
+#battery.percentage {
+  font-family: "JetBrainsMono NFM";
+  font-weight: 800;            /* ExtraBold, same as the temperature */
+  font-size: 12px;
+  padding: 0;                  /* no own color: full @fg, and low-battery yellow/red still apply */
+}
+#battery.icon, #pulseaudio.icon {
+  font-family: "JetBrainsMono NFM";   /* Mono = icons one cell wide, so they center */
+  font-size: 18px;
+  padding: 4px 0 0 0;
 }
 
-#battery.critical {
-  color: @red;
-  animation: blink 1s linear infinite;
+/* --- time: drawn with block characters by scripts/blockclock.py --- */
+#custom-blockclock {
+  font-family: "JetBrainsMono NFM";
+  font-size: 7px;              /* each block = one "pixel" of the 3x5 digit font */
+  font-weight: normal;
+  color: @fg;
+  padding: 6px 0;
 }
 
-#battery.charging {
-  color: @green;
+tooltip {
+  background: @bg;
+  border: 2px solid @fg;
+  border-radius: 0;
+}
+tooltip label { color: @fg; }
+
+/* --- sideways visualizer --- */
+#custom-cava {
+  font-size: 16px;
+  padding: 4px 0;
+  color: @fg;
+  margin-bottom: 4px;
+}
+#custom-cava.idle { color: alpha(@fg, 0.25); }
+
+/* --- emergency label (empty/hidden normally) --- */
+#custom-emergency {
+  color: @bg;
+  background: @red;
+  margin: 0 3px 8px 3px;
+  padding: 4px 0;
+  animation: blink 1s steps(1) infinite;
+}
+#custom-emergency.normal { padding: 0; margin: 0; background: transparent; }
+
+/* --- workspaces (custom buttons) --- */
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4 {
+  color: alpha(@fg, 0.45);
+  font-family: "Noto Sans CJK JP", "JetBrainsMono Nerd Font";
+  font-size: 16px;
+  font-weight: 700;            /* Bold */
+  padding: 2px 0 0 0;
+  margin: 0;
+  border-left: 3px solid transparent;
+}
+#custom-ws1.occupied, #custom-ws2.occupied, #custom-ws3.occupied, #custom-ws4.occupied {
+  color: @fg;
+}
+#custom-ws1.active, #custom-ws2.active, #custom-ws3.active, #custom-ws4.active {
+  color: mix(@fg, white, 0.35);
+  border-left: 3px solid @fg;
 }
 
-@keyframes blink {
-  from {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+#custom-ws1:hover, #custom-ws2:hover, #custom-ws3:hover, #custom-ws4:hover {
+  color: @bg;
+  background: @red;
 }
+
+/* --- battery states (module#name is styled as #module.name) --- */
+#battery.icon.warning, #battery.bar.warning { color: @yellow; }
+#battery.icon.critical, #battery.bar.critical { color: @red; animation: blink 1s steps(1) infinite; }
+#battery.icon.charging { color: mix(@fg, white, 0.3); }
+
+/* --- weather --- */
+#custom-weather { padding: 16px 0 0 0; font-family: "JetBrainsMono NFM"; font-weight: 800; font-size: 12px; }  /* ExtraBold, matches the solid icons */
+#custom-weather.stale { color: alpha(@fg, 0.5); }
+
+/* --- volume icon: solid vinyl record (matches the solid heart) --- */
+#pulseaudio.icon {
+  font-family: "JetBrainsMono NFM";
+  font-size: 18px;
+  padding-top: 4px;
+}
+#pulseaudio.icon.muted { color: alpha(@fg, 0.3); }   /* muted: same note, dimmed */

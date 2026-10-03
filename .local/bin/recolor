@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# recolor <image> <template>  ->  <dir>/<name>_<template>.<ext>  (original untouched)
+# templates: gowall's built-ins + ~/.config/gowall/config.yml   (`gowall list`)
+set -euo pipefail
+
+[[ $# -eq 2 ]] || { echo "usage: recolor <image> <template>"; exit 1; }
+img=$1 theme=$2
+[[ -f $img ]] || { echo "no such file: $img"; exit 1; }
+
+dir=$(dirname "$img")
+file=$(basename "$img")
+out="$dir/${file%.*}_${theme}.${file##*.}"
+
+gowall convert "$img" -t "$theme" --output "$out" --preview false --yes >/dev/null
+echo "$out"

@@ -1,0 +1,2 @@
+@import "../1-big/style.css";
+#clock.hour, #clock.min { font-family: "IBM Plex Mono"; font-size: 21px; }

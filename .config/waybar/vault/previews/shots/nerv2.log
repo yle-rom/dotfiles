@@ -1,0 +1,27 @@
+
+(waybar:306750): Gtk-WARNING **: 23:43:47.656: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[2026-10-01 23:43:47.698] [info] Using configuration file nerv2/config
+[2026-10-01 23:43:47.699] [info] Including resource file: ~/.cache/wal/colors-waybar-calendar.json
+[2026-10-01 23:43:47.705] [info] Using CSS file nerv2/style.css
+Discharging
+Discharging
+Discharging
+[2026-10-01 23:43:47.772] [info] Bar configured (width: 35, height: 964) for output: eDP-2
+[306936, Main Thread] WARNING: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name: 'glib warning', file toolkit/xre/nsSigHandlers.cpp:200
+
+(firefox:306936): Gtk-WARNING **: 23:44:19.560: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[Parent 306936, Main Thread] WARNING: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name: 'glib warning', file toolkit/xre/nsSigHandlers.cpp:200
+
+(firefox:306936): Gtk-WARNING **: 23:44:19.728: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[Parent 306936, Main Thread] WARNING: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name: 'glib warning', file toolkit/xre/nsSigHandlers.cpp:200
+
+(firefox:306936): Gtk-WARNING **: 23:44:19.775: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+MESA-LOADER: failed to open i915: /usr/lib/gbm/i915_gbm.so: cannot open shared object file: No such file or directory (search paths /usr/lib/gbm, suffix _gbm)
+[Parent 306936, Main Thread] WARNING: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name: 'glib warning', file toolkit/xre/nsSigHandlers.cpp:200
+
+(firefox:306936): Gtk-WARNING **: 23:44:21.675: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[Parent 306936, Main Thread] WARNING: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name: 'glib warning', file toolkit/xre/nsSigHandlers.cpp:200
+
+(firefox:306936): Gtk-WARNING **: 23:44:21.740: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+
+(calpopup.py:307498): Gtk-WARNING **: 23:45:05.018: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name

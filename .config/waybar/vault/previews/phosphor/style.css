@@ -1,0 +1,29 @@
+@import "../_base.css";
+
+window#waybar {
+  color: @fg;
+  border-radius: 4px;
+  border: 2px solid @fg;
+  background-color: @bg;
+  background-image: repeating-linear-gradient(
+    0deg, alpha(@fg, 0.13) 0px, alpha(@fg, 0.13) 1px, transparent 1px, transparent 3px);
+  box-shadow: 0 0 12px alpha(@fg, 0.45), inset 0 0 14px alpha(@fg, 0.25);
+}
+label { text-shadow: 0 0 4px alpha(@fg, 0.9), 0 0 9px alpha(@fg, 0.5); }
+
+#battery-bar, #backlight-bar, #pulseaudio-bar { color: mix(@fg, white, 0.15); }
+
+#workspaces button {
+  color: alpha(@fg, 0.45);
+  background: transparent;
+  padding: 8px 4px;
+  transition: all 200ms ease;
+}
+#workspaces button label { text-shadow: none; }
+#workspaces button.active {
+  color: @bg;
+  background-color: @fg;
+  box-shadow: 0 0 10px @fg;
+}
+#workspaces button.active label { text-shadow: none; }
+#workspaces button:hover { color: @fg; background: alpha(@fg, 0.15); }

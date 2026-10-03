@@ -1,0 +1,8 @@
+
+(waybar:335079): Gtk-WARNING **: 00:57:37.712: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[2026-10-02 00:57:37.740] [info] Using configuration file power/d-bright/config
+[2026-10-02 00:57:37.743] [info] Using CSS file power/d-bright/style.css
+Charging
+Charging
+Charging
+[2026-10-02 00:57:37.781] [info] Bar configured (width: 35, height: 964) for output: eDP-2

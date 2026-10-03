@@ -1,0 +1,71 @@
+#!/bin/bash
+# ─────────────────────────────────────────
+#  MAGI POWER PROFILE — Rofi Menu
+#  NERV Central Dogma
+# ─────────────────────────────────────────
+
+# Load wal colors
+if [[ -f ~/.cache/wal/colors.sh ]]; then
+    source ~/.cache/wal/colors.sh
+    accent=$color3
+    fg=$foreground
+    bg=$background
+else
+    accent="#f3701e"
+    fg="#e8d8c9"
+    bg="#000000"
+fi
+
+# Current EPP state (for marking active one with an indicator)
+current=$(cat /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference 2>/dev/null)
+
+# Options
+balanced="BALANCED"
+performance="PERFORMANCE"
+cancel="CANCEL"
+
+# Mark current profile with an indicator
+case "$current" in
+  "balance_performance") balanced="●  BALANCED" ;;
+  "performance")         performance="●  PERFORMANCE" ;;
+esac
+
+# Rofi menu — single flat color throughout, no alternating selected/normal states
+chosen=$(printf '%s\n' "$balanced" "$performance" "$cancel" | rofi \
+  -dmenu \
+  -p "MAGI POWER PROFILE" \
+  -theme-str "
+    window {
+      width: 320px;
+      border: 2px solid;
+      border-color: ${accent};
+      border-radius: 0px;
+      padding: 0px;
+      background-color: ${bg};
+    }
+    mainbox { padding: 0px; spacing: 0px; background-color: ${bg}; }
+    inputbar {
+      background-color: ${accent};
+      text-color: ${fg};
+      padding: 12px 16px;
+      spacing: 0px;
+      children: [prompt];
+    }
+    prompt {
+      background-color: ${accent};
+      text-color: ${fg};
+      font: \"JetBrainsMono Nerd Font Bold 9\";
+      letter-spacing: 3px;
+    }
+    listview { padding: 8px; spacing: 2px; lines: 3; fixed-height: true; background-color: ${bg}; }
+    element { padding: 10px 16px; border-radius: 0px; spacing: 8px; background-color: ${fg}; text-color: ${bg}; }
+    element selected { background-color: ${bg}; text-color: ${fg}; }
+    element-text { background-color: inherit; text-color: inherit; font: \"JetBrainsMono Nerd Font 11\"; vertical-align: 0.5; }
+  ")
+
+# Execute chosen option
+case "$chosen" in
+  "$balanced")    sudo /home/ely/.local/bin/set-epp balanced ;;
+  "$performance") sudo /home/ely/.local/bin/set-epp performance ;;
+  "$cancel"|"")   exit 0 ;;
+esac

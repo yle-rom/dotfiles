@@ -1,0 +1,2 @@
+@import "../1-big/style.css";
+#clock.hour, #clock.min { font-family: "DSEG7 Classic"; font-size: 19px; font-weight: bold; }

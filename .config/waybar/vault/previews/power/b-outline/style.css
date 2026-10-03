@@ -1,0 +1,4 @@
+@import "../../../../style.css";
+#custom-power { background: transparent; color: @fg; margin: 4px 4px 0 4px; padding: 6px 0;
+  border: 1px solid alpha(@fg, 0.6); }
+#custom-power:hover { background: @red; color: @bg; border-color: @red; }

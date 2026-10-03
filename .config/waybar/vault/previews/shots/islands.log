@@ -1,0 +1,12 @@
+
+(waybar:286470): Gtk-WARNING **: 22:28:24.996: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[2026-10-01 22:28:25.049] [info] Using configuration file islands/config
+[2026-10-01 22:28:25.054] [info] Using CSS file islands/style.css
+[2026-10-01 22:28:25.079] [info] Hyprland IPC starting
+[2026-10-01 22:28:25.080] [info] Loading persistent workspaces from Waybar config
+[2026-10-01 22:28:25.081] [info] Loading persistent workspaces from Hyprland workspace rules
+Discharging
+Discharging
+Discharging
+[2026-10-01 22:28:25.109] [warning] Requested width: 35 is less than the minimum width: 36 required by the modules
+[2026-10-01 22:28:25.109] [info] Bar configured (width: 36, height: 964) for output: eDP-2

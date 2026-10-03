@@ -1,0 +1,179 @@
+{
+  "layer": "top",
+  "position": "left",
+  "margin-top": 18,
+  "margin-bottom": 18,
+  "margin-left": 17,
+  "margin-right": 0,
+  "width": 35,
+  "spacing": 0,
+  "modules-left": [
+    "custom/power",
+    "network",
+    "battery#percentage",
+    "battery#bar",
+    "battery#icon",
+    "custom/spacer",
+    "backlight#percentage",
+    "backlight#bar",
+    "backlight#icon",
+    "custom/spacer",
+    "pulseaudio#percentage",
+    "pulseaudio#bar",
+    "pulseaudio#icon",
+    "custom/spacer"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "hyprland/workspaces"
+  ],
+  /* --- Module Definitions --- */
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "persistent-workspaces": {
+      "*": 4
+    }
+  },
+  "clock": {
+    "format": "{:%e\n%b\n\n%H\n%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+  },
+  "network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "⚠",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "on-click": "alacritty -e nmtui",
+    "tooltip-format": "{essid}{ifname} ({signalStrength}%)"
+  },
+  /* Battery Parts */
+  "battery#icon": {
+    "format": "{icon}",
+    "format-charging": "󱊣",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "on-click": "~/.local/bin/powerprofile-menu"
+  },
+  "battery#bar": {
+    "rotate": 90,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon}",
+    "format-charging": "{icon}",
+    "format-icons": [
+      "[░░░░░░░░░░]",
+      "[█░░░░░░░░░]",
+      "[██░░░░░░░░]",
+      "[███░░░░░░░]",
+      "[████░░░░░░]",
+      "[█████░░░░░]",
+      "[██████░░░░]",
+      "[███████░░░]",
+      "[████████░░]",
+      "[█████████░]",
+      "[██████████]"
+    ],
+    "on-click": "~/.local/bin/powerprofile-menu"
+  },
+  "battery#percentage": {
+    "format": "{capacity}",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "on-click": "~/.local/bin/powerprofile-menu"
+  },
+  /* Backlight Parts */
+  "backlight#icon": {
+    "format": "󰖨"
+  },
+  "backlight#bar": {
+    "rotate": 90,
+    "format": "{icon}",
+    "format-icons": [
+      "[░░░░░░░░░░]",
+      "[█░░░░░░░░░]",
+      "[██░░░░░░░░]",
+      "[███░░░░░░░]",
+      "[████░░░░░░]",
+      "[█████░░░░░]",
+      "[██████░░░░]",
+      "[███████░░░]",
+      "[████████░░]",
+      "[█████████░]",
+      "[██████████]"
+    ]
+  },
+  "backlight#percentage": {
+    "format": "{percent}"
+  },
+  /* Audio Parts */
+  "pulseaudio#icon": {
+    "format": "{icon}",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "pulseaudio#bar": {
+    "rotate": 90,
+    "format": "{icon}",
+    "format-muted": "[░░░░░░░░░░]",
+    "format-icons": {
+      "default": [
+        "[░░░░░░░░░░]",
+        "[█░░░░░░░░░]",
+        "[██░░░░░░░░]",
+        "[███░░░░░░░]",
+        "[████░░░░░░]",
+        "[█████░░░░░]",
+        "[██████░░░░]",
+        "[███████░░░]",
+        "[████████░░]",
+        "[█████████░]",
+        "[██████████]"
+      ]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol"
+  },
+  "pulseaudio#percentage": {
+    "format": "{volume}",
+    "format-muted": "0",
+    "on-click": "pavucontrol"
+  },
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "~/.local/bin/powermenu",
+    "tooltip": false
+  },
+  /* --- The Gap Maker --- */
+  "custom/spacer": {
+    "format": " ",
+    "tooltip": false
+  }
+}

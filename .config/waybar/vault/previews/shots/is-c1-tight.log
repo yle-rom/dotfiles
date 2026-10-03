@@ -1,0 +1,8 @@
+
+(waybar:325059): Gtk-WARNING **: 00:27:13.969: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[2026-10-02 00:27:13.991] [info] Using configuration file islands2/c1-tight/config
+[2026-10-02 00:27:13.994] [info] Using CSS file islands2/c1-tight/style.css
+Charging
+Charging
+Charging
+[2026-10-02 00:27:14.038] [info] Bar configured (width: 35, height: 964) for output: eDP-2

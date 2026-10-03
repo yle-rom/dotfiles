@@ -1,0 +1,10 @@
+@import "../../nerv2/style.css";
+
+/* icons: Mono nerd font = one cell wide = actually centered */
+#battery-icon, #pulseaudio-icon {
+  font-family: "JetBrainsMono NFM";
+  font-size: 15px;
+  padding: 4px 0 2px 0;
+}
+#battery-percentage, #pulseaudio-percentage { padding: 0 0 4px 0; }
+#battery-bar, #pulseaudio-bar { font-size: 16px; }

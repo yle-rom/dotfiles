@@ -1,0 +1,11 @@
+/* Pattern red. Swapped in by emergency.sh */
+@define-color fg  #ff3b2f;
+@define-color bg  #1c0303;
+@define-color red #ff3b2f;
+
+window#waybar { animation: alarm 1s ease-in-out infinite; }
+@keyframes alarm {
+  0%   { border-color: #ff3b2f; box-shadow: 0 0 14px #ff3b2f; }
+  50%  { border-color: #5a0d08; box-shadow: 0 0 0 transparent; }
+  100% { border-color: #ff3b2f; box-shadow: 0 0 14px #ff3b2f; }
+}

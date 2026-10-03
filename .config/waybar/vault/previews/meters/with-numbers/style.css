@@ -1,0 +1,2 @@
+@import "../../nerv2/style.css";
+#battery.bar, #pulseaudio.bar { padding-top: 0; }

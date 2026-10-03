@@ -1,0 +1,8 @@
+
+(waybar:326368): Gtk-WARNING **: 00:30:02.324: Theme parsing error: gtk.css:1048:16: 'border-spacing' is not a valid property name
+[2026-10-02 00:30:02.347] [info] Using configuration file bg/2-dotmatrix/config
+[2026-10-02 00:30:02.350] [info] Using CSS file bg/2-dotmatrix/style.css
+Charging
+Charging
+Charging
+[2026-10-02 00:30:02.388] [info] Bar configured (width: 35, height: 964) for output: eDP-2

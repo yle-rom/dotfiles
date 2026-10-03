@@ -1,0 +1,55 @@
+RICE MAP — what follows the wallpaper, and where it lives
+========================================================
+
+THE CHAIN  (pick wallpaper -> everything recolors)
+  hyprquickpaper (~/.config/quickshell/hyprquickpaper)
+    shell.qml            picker UI, border = config.json border_color
+    commands.sh <img>    runs on pick:
+      1. awww img <img>                    set wallpaper, save to ~/.cache/current-wallpaper
+      2. wal -i <img> -n --backend colorz  -> ~/.cache/wal/*  (palette + templates)
+         2b. config.json border_color = color3
+      3. symlinks -> wal  (alacritty, waybar)   + pkill -SIGUSR2 waybar
+      4-5. hyprland active border = yellow/white from wal  (hyprctl eval)
+      6. makoctl reload, thunar -q, pywalfox update, restart darkreader-pywal
+
+  login: hypr/autostart.lua -> `rice --apply` (re-applies hypr border) + awww restores wallpaper
+
+PALETTE SWITCH  (~/.local/bin/rice)
+  toggles active symlinks between pywal and a fixed "custom" palette:
+    alacritty/colors-active.toml -> wal OR alacritty/colors-custom.toml
+    waybar/colors-active.css     -> wal OR waybar/colors-custom.css
+  + hypr border, pywalfox
+  (mako, gtk, nvim, firefox stay on pywal either way)
+
+PYWAL  (~/.config/wal)
+  templates/colors-waybar.css     -> waybar palette
+  templates/colors-alacritty.toml -> terminal palette
+  templates/colors-mako           -> notification colors
+  templates/colors-gtk.css        -> GTK3+4 named colors (adw-gtk3)
+  templates/colors-gtk4.css       -> GTK4 / libadwaita CSS variables (accent etc.)
+  everything else in ~/.cache/wal is pywal's built-in output (colors.json, colors.sh ...)
+
+WHO READS WHAT
+  alacritty     alacritty.toml imports colors-active.toml (symlink)
+  waybar        style.css imports colors-active.css (symlink)        details: waybar/RICE.txt
+  rofi menus    powermenu, powerprofile-menu -> waybar/scripts/menu-theme.sh -> colors-active.css
+  hypr borders  set at runtime by commands.sh / rice (hyprctl eval), not in a config file
+  hypr blur     hypr/lookandfeel.lua  (alacritty opacity 0.8 + blur)
+  mako          mako/config includes ~/.cache/wal/colors-mako
+  gtk3 / thunar theme adw-gtk3-dark (gtk-3.0/settings.ini + gsettings),
+                gtk-3.0/gtk.css imports ~/.cache/wal/colors-gtk.css   (backups: gtk-3.0/vault/)
+  gtk4 apps     gtk-4.0/gtk.css imports colors-gtk.css + colors-gtk4.css  (backups: gtk-4.0/vault/)
+  firefox       pywalfox (native host ~/.mozilla/native-messaging-hosts/pywalfox.json)
+  web pages     darkreader-pywal (/opt/darkreader-pywal, host .../darkreader.json)
+  nvim          wal.vim colorscheme (default; ~/.cache/nvim-theme picks another)
+  wallpaper ui  hyprquickpaper config.json border_color
+
+NOT FOLLOWING PYWAL
+  rofi launcher   rofi/config.rasi (gruvbox-light-soft theme)
+  keyboard light  ~/.local/bin/kblight <hex> is manual (rice only prints the accent)
+  spotify, discord
+  icons (AdwaitaLegacy)
+
+OLD / UNUSED
+  ~/.local/bin/wallpaper      deprecated rofi picker (same steps as commands.sh)
+  ~/.config/waybar/vault/     old bar, backups, previews

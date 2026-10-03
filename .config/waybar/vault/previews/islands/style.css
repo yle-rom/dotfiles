@@ -1,0 +1,29 @@
+@import "../_base.css";
+
+window#waybar { background: transparent; color: @fg; }
+
+.modules-left, .modules-center, .modules-right {
+  background-color: @bg;
+  border: 2px solid @fg;
+  border-radius: 10px;
+  padding: 4px 0;
+}
+.modules-center { border-color: alpha(@fg, 0.5); }
+
+#custom-power {
+  margin: 2px 4px 6px 4px;
+  border-radius: 6px;
+  background: alpha(@fg, 0.15);
+}
+#custom-power:hover { background: @red; color: @bg; }
+
+#workspaces button {
+  color: @fg;
+  background: transparent;
+  padding: 6px 4px;
+  margin: 2px 4px;
+  border-radius: 6px;
+  transition: all 200ms ease;
+}
+#workspaces button.active { background-color: @fg; color: @bg; padding: 14px 4px; }
+#workspaces button:hover { background: alpha(@fg, 0.25); }

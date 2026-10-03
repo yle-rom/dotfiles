@@ -81,10 +81,10 @@
   },
   "pulseaudio#icon": {
     "format": "{icon}",
-    "format-muted": "󰀥",
+    "format-muted": "󰍴",
     "format-icons": {
       "default": [
-        "󰀥"
+        "󰥛"
       ]
     },
     "on-click": "pavucontrol",
@@ -126,6 +126,10 @@
     "on-click": "~/.local/bin/powermenu",
     "tooltip": false
   },
+  "custom/spacer": {
+    "format": " ",
+    "tooltip": false
+  },
   "custom/ws1": {
     "exec": "~/.config/waybar/scripts/workspaces.py 1",
     "return-type": "json",
@@ -162,7 +166,7 @@
     "interval": 5
   },
   "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.py --moon",
+    "exec": "~/.config/waybar/scripts/weather.py",
     "return-type": "json",
     "interval": 900,
     "escape": false,

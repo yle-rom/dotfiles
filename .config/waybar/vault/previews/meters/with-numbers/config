@@ -1,4 +1,7 @@
 {
+  "include": [
+    "~/.cache/wal/colors-waybar-calendar.json"
+  ],
   "reload_style_on_change": true,
   "layer": "top",
   "position": "left",
@@ -10,15 +13,18 @@
   "spacing": 0,
   "modules-left": [
     "custom/power",
+    "battery#percentage",
     "battery#bar",
     "battery#icon",
-    "battery#percentage",
+    "custom/spacer",
+    "pulseaudio#percentage",
     "pulseaudio#bar",
     "pulseaudio#icon",
-    "custom/weather"
+    "custom/spacer"
   ],
   "modules-center": [
-    "custom/blockclock"
+    "clock#date",
+    "clock#time"
   ],
   "modules-right": [
     "custom/emergency",
@@ -76,15 +82,14 @@
       "critical": 10
     },
     "on-click": "~/.local/bin/powerprofile-menu",
-    "justify": "center",
-    "tooltip-format": "Battery {capacity}% · {timeTo}"
+    "justify": "center"
   },
   "pulseaudio#icon": {
     "format": "{icon}",
-    "format-muted": "󰀥",
+    "format-muted": "󰍴",
     "format-icons": {
       "default": [
-        "󰀥"
+        "󰥛"
       ]
     },
     "on-click": "pavucontrol",
@@ -126,54 +131,61 @@
     "on-click": "~/.local/bin/powermenu",
     "tooltip": false
   },
+  "custom/spacer": {
+    "format": " ",
+    "tooltip": false
+  },
   "custom/ws1": {
-    "exec": "~/.config/waybar/scripts/workspaces.py 1",
+    "exec": "~/.config/waybar/previews/nerv2/workspaces.py 1",
     "return-type": "json",
     "escape": false,
     "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 1 })'"
   },
   "custom/ws2": {
-    "exec": "~/.config/waybar/scripts/workspaces.py 2",
+    "exec": "~/.config/waybar/previews/nerv2/workspaces.py 2",
     "return-type": "json",
     "escape": false,
     "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 2 })'"
   },
   "custom/ws3": {
-    "exec": "~/.config/waybar/scripts/workspaces.py 3",
+    "exec": "~/.config/waybar/previews/nerv2/workspaces.py 3",
     "return-type": "json",
     "escape": false,
     "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 3 })'"
   },
   "custom/ws4": {
-    "exec": "~/.config/waybar/scripts/workspaces.py 4",
+    "exec": "~/.config/waybar/previews/nerv2/workspaces.py 4",
     "return-type": "json",
     "escape": false,
     "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 4 })'"
   },
   "custom/cava": {
-    "exec": "~/.config/waybar/scripts/cava.py",
+    "exec": "~/.config/waybar/previews/nerv2/cava.py",
     "return-type": "json",
     "rotate": 90,
     "tooltip": false
   },
   "custom/emergency": {
-    "exec": "~/.config/waybar/scripts/emergency.sh",
+    "exec": "~/.config/waybar/previews/nerv2/emergency.sh",
     "return-type": "json",
     "interval": 5
   },
-  "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.py --moon",
-    "return-type": "json",
-    "interval": 900,
-    "escape": false,
-    "justify": "center",
-    "on-click": "xdg-open https://wttr.in"
+  "clock#date": {
+    "format": "{:%e\n%b}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "on-click": "~/.config/waybar/previews/nerv2/calendar.py",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
-  "custom/blockclock": {
-    "exec": "~/.config/waybar/scripts/blockclock.py",
-    "return-type": "json",
-    "escape": false,
-    "justify": "center",
-    "on-click": "~/.config/waybar/scripts/calpopup.py"
+  "clock#time": {
+    "format": "{:%H\n──\n%M}",
+    "tooltip-format": "{:%H:%M · %Z}"
   }
 }
