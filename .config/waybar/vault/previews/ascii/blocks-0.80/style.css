@@ -1,8 +1,0 @@
-@import "../../../../style.css";
-#custom-blockclock {
-  font-family: "JetBrainsMono NFM";
-  font-size: 7px;
-  font-weight: normal;
-  color: mix(@fg, white, 0.25);
-  padding: 6px 0;
-}
