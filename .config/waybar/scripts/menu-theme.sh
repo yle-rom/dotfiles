@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Shared rofi look for the bar's menus (powermenu, powerprofile-menu).
+# Shared rofi look for the bar's menus (powermenu, magipm).
 # Colors come from the bar itself (colors-active.css), so menus follow pywal *and* `rice` custom colors.
 #   source ~/.config/waybar/scripts/menu-theme.sh
 #   rofi -dmenu -theme-str "$(menu_theme <lines>)" ...

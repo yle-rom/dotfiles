@@ -40,7 +40,7 @@
       "warning": 20,
       "critical": 10
     },
-    "on-click": "~/.local/bin/powerprofile-menu",
+    "on-click": "~/.local/bin/magitl",
     "tooltip-format": "Battery {capacity}% · {timeTo}",
     "justify": "center"
   },
@@ -65,7 +65,7 @@
       "█████████░",
       "██████████"
     ],
-    "on-click": "~/.local/bin/powerprofile-menu",
+    "on-click": "~/.local/bin/magitl",
     "tooltip-format": "Battery {capacity}% · {timeTo}",
     "justify": "center"
   },
@@ -75,7 +75,7 @@
       "warning": 20,
       "critical": 10
     },
-    "on-click": "~/.local/bin/powerprofile-menu",
+    "on-click": "~/.local/bin/magitl",
     "justify": "center",
     "tooltip-format": "Battery {capacity}% · {timeTo}"
   },
