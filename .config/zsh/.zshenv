@@ -23,6 +23,8 @@ export NPM_CONFIG_PREFIX="$XDG_DATA_HOME/npm-global"
 
 # Ollama
 export OLLAMA_MODELS="$XDG_DATA_HOME/ollama/models"
+export OLLAMA_KV_CACHE_TYPE=q8_0
+export OLLAMA_FLASH_ATTENTION=1
 
 # GPG
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
@@ -33,12 +35,10 @@ export PULSE_COOKIE="$XDG_DATA_HOME/pulse/cookie"
 # Readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 
-# MariaDB
-export MYSQL_HISTFILE="$XDG_STATE_HOME/mariadb/history"
 
 # NVIDIA shader cache
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nvidia"
-export CUDA_CACHE_PATH="XDG_CACHE_HOME/nvidia/nv/ComputeCache"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nvidia/nv/ComputeCache"
 
 # Java
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CACHE_HOME/java"
@@ -50,6 +50,7 @@ export MAVEN_OPTS="-Dmaven.repo.local=$XDG_DATA_HOME/maven/m2"
 export PATH="$XDG_DATA_HOME/npm-global/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$CARGO_HOME/bin:$PATH"
+typeset -U path  # dedupe (keeps first): .zshenv runs in every nested zsh
 
 # OpenClaude
 #export OPENCLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/.config/openclaude"

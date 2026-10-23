@@ -31,8 +31,6 @@ alias c="clear"
 alias speedtest="speedtest --secure"
 alias wifi="nmtui"
 alias bluetooth="blueman-manager"
-alias powerset="powerprofilesctl set"
-alias powerget="powerprofilesctl get"
 
 alias pdf="zathura"
 alias md='glow'
