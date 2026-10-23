@@ -16,4 +16,4 @@ include=~/.cache/wal/colors-mako
 default-timeout=5000
 
 [app-name="Firefox"]
-invisible=1
+invisible=0
