@@ -4,7 +4,6 @@ return {
     { 'mason-org/mason.nvim', opts = {} },
     'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { 'j-hui/fidget.nvim', opts = {} },
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -49,13 +48,38 @@ return {
       end,
     })
 
+    -- inlay hints: servers only send them when asked to here; <leader>th shows/hides them
+    local ts_hints = {
+      includeInlayParameterNameHints = 'all',
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+    }
     local servers = {
-      ts_ls = {},
+      ts_ls = { settings = { typescript = { inlayHints = ts_hints }, javascript = { inlayHints = ts_hints } } },
       html = {},
       cssls = {},
       eslint = {},
-      pyright = {},
-      rust_analyzer = {},
+      pyright = {
+        -- basic mode, and no errors for wrong argument types (e.g. None passed to a bool param)
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = 'basic',
+              diagnosticSeverityOverrides = { reportArgumentType = 'none' },
+            },
+          },
+        },
+        -- use the project's .venv (poetry/uv) instead of system python when there is one
+        on_init = function(client)
+          local venv_python = (client.root_dir or vim.fn.getcwd()) .. '/.venv/bin/python'
+          if vim.uv.fs_stat(venv_python) then
+            client.settings = vim.tbl_deep_extend('force', client.settings or {}, { python = { pythonPath = venv_python } })
+            client:notify('workspace/didChangeConfiguration', { settings = client.settings })
+          end
+        end,
+      },
+      clangd = {},
       bashls = {},
       sqls = {},
       jsonls = {},
@@ -81,18 +105,18 @@ return {
           })
         end,
         settings = {
-          Lua = {},
+          Lua = { hint = { enable = true, setType = true } },
         },
       },
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})
-    ensure_installed = vim.tbl_filter(function(name) return name ~= 'rust_analyzer' end, ensure_installed)
     vim.list_extend(ensure_installed, {
       'prettier',
       'stylua',
       'bash-language-server',
       'sqls',
+      'clang-format',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }

@@ -7,6 +7,7 @@ return {
     local parsers = {
       'bash',
       'c',
+      'cpp',
       'diff',
       'html',
       'lua',
@@ -21,6 +22,12 @@ return {
       'tsx',
       'css',
       'java',
+      'python',
+      'rust',
+      'json',
+      'toml',
+      'yaml',
+      'sql',
     }
     require('nvim-treesitter').install(parsers)
     vim.api.nvim_create_autocmd('FileType', {

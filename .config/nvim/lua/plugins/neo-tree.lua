@@ -15,6 +15,9 @@ return {
       hijack_netrw_behavior = 'open_default',
       use_libuv_file_watcher = true,
       follow_current_file = { enabled = true },
+      filtered_items = {
+        hide_gitignored = false,
+      },
     },
     window = {
       width = 45,

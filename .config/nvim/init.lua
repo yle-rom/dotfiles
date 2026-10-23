@@ -9,7 +9,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.mouse = 'a'
+vim.o.mouse = ''
 vim.o.showmode = false
 vim.o.breakindent = true
 vim.o.undofile = true
@@ -38,13 +38,25 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down and center' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up and center' })
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle file tree', silent = true })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- one terminal in a split below; <leader>tt hides it and brings the same one back
+local term_buf
+vim.keymap.set('n', '<leader>tt', function()
+  if term_buf and vim.api.nvim_buf_is_valid(term_buf) then
+    local win = vim.fn.bufwinid(term_buf)
+    if win ~= -1 then return vim.api.nvim_win_hide(win) end
+    vim.cmd('botright 15split | buffer ' .. term_buf)
+  else
+    vim.cmd 'botright 15split | terminal'
+    term_buf = vim.api.nvim_get_current_buf()
+  end
+  vim.cmd 'startinsert'
+end, { desc = '[T]oggle [T]erminal' })
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Show signature help' })
-vim.keymap.set('n', 'SS', '<cmd>x<CR>', { desc = 'Save and Quit' })
 vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, 'D', '"_D', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, 'x', '"_x', { noremap = true })
@@ -87,8 +99,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.hl.on_yank() end,
 })
 
-vim.opt.mouse = ''
-
 -- lazy bootstrap
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -99,22 +109,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- plugins (added in lua/plugins/)
-require('lazy').setup({ { import = 'plugins' } }, {
-  ui = {
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
-})
+require('lazy').setup { { import = 'plugins' } }
