@@ -41,7 +41,8 @@ WHO READS WHAT
   gtk4 apps     gtk-4.0/gtk.css imports colors-gtk.css + colors-gtk4.css  (backups: gtk-4.0/vault/)
   firefox       pywalfox (native host ~/.mozilla/native-messaging-hosts/pywalfox.json)
   web pages     darkreader-pywal (/opt/darkreader-pywal, host .../darkreader.json)
-  nvim          wal.vim colorscheme (default; ~/.cache/nvim-theme picks another)
+  nvim          kanagawa-dragon syntax + wal UI colors, read from colors.json at startup
+                (lua/plugins/colorschemes.lua; ~/.cache/nvim-theme picks theme; backup: nvim/vault/)
   wallpaper ui  hyprquickpaper config.json border_color
 
 NOT FOLLOWING PYWAL
