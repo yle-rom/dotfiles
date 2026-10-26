@@ -53,6 +53,15 @@ window#waybar {
   padding: 4px 0 0 0;
 }
 
+/* --- time: day meter (scripts/dayclock.py), same look as the battery/volume meters --- */
+#custom-daybar { padding: 16px 0 2px 0; background: transparent; }
+#custom-daytime {
+  font-family: "JetBrainsMono NFM";
+  font-weight: 800;            /* ExtraBold, like the percentage and temperature */
+  font-size: 12px;
+  padding: 4px 0 0 0;
+}
+
 /* --- time: drawn with block characters by scripts/blockclock.py --- */
 #custom-blockclock {
   font-family: "JetBrainsMono NFM";
@@ -80,6 +89,8 @@ tooltip label { color: @fg; }
 
 /* --- emergency label (empty/hidden normally) --- */
 #custom-emergency {
+  font-family: "Noto Sans CJK JP";
+  font-weight: 400;            /* Regular, like the other kanji */
   color: @bg;
   background: @red;
   margin: 0 3px 8px 3px;
@@ -93,7 +104,7 @@ tooltip label { color: @fg; }
   color: alpha(@fg, 0.45);
   font-family: "Noto Sans CJK JP", "JetBrainsMono Nerd Font";
   font-size: 16px;
-  font-weight: 700;            /* Bold */
+  font-weight: 400;            /* Regular */
   padding: 2px 0 0 0;
   margin: 0;
   border-left: 3px solid transparent;
@@ -117,8 +128,12 @@ tooltip label { color: @fg; }
 #battery.icon.charging { color: mix(@fg, white, 0.3); }
 
 /* --- weather --- */
-#custom-weather { padding: 16px 0 0 0; font-family: "JetBrainsMono NFM"; font-weight: 800; font-size: 12px; }  /* ExtraBold, matches the solid icons */
+#custom-weather { padding: 28px 0 0 0; font-family: "JetBrainsMono NFM"; font-weight: 800; font-size: 12px; }  /* ExtraBold, matches the solid icons */
 #custom-weather.stale { color: alpha(@fg, 0.5); }
+
+/* --- sync ratio: typing speed (scripts/toys.py sync) --- */
+#custom-sync { padding: 28px 0 0 0; font-family: "JetBrainsMono NFM"; font-weight: 800; font-size: 12px; }
+#custom-sync.berserk { color: @red; animation: blink 0.5s steps(1) infinite; }   /* >= 130% */
 
 /* --- volume icon: solid vinyl record (matches the solid heart) --- */
 #pulseaudio.icon {

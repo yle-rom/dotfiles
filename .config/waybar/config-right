@@ -1,0 +1,77 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "right",
+  "margin-top": 18,
+  "margin-bottom": 18,
+  "margin-left": 0,
+  "margin-right": 17,
+  "width": 35,
+  "spacing": 0,
+  "modules-left": [
+    "custom/power",
+    "custom/cpu",
+    "custom/net",
+    "custom/pet"
+  ],
+  "modules-right": [
+    "custom/ws5",
+    "custom/ws6",
+    "custom/ws7",
+    "custom/ws8"
+  ],
+  "custom/power": {
+    "format": "󰥓",
+    "on-click": "~/.local/bin/powermenu",
+    "tooltip": false
+  },
+  "custom/cpu": {
+    "exec": "~/.config/waybar/scripts/sysmon.py cpu",
+    "return-type": "json",
+    "escape": false,
+    "justify": "center",
+    "on-click": "alacritty -e nvtop"
+  },
+  "custom/net": {
+    "exec": "~/.config/waybar/scripts/sysmon.py net",
+    "return-type": "json",
+    "escape": false,
+    "justify": "center"
+  },
+  "custom/rain": {
+    "exec": "~/.config/waybar/scripts/toys.py rain",
+    "return-type": "json",
+    "escape": false,
+    "justify": "center"
+  },
+  "custom/pet": {
+    "exec": "~/.config/waybar/scripts/toys.py pet 92",
+    "return-type": "json",
+    "escape": false,
+    "justify": "center"
+  },
+  "custom/ws5": {
+    "exec": "~/.config/waybar/scripts/workspaces.py 5",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 5 })'"
+  },
+  "custom/ws6": {
+    "exec": "~/.config/waybar/scripts/workspaces.py 6",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 6 })'"
+  },
+  "custom/ws7": {
+    "exec": "~/.config/waybar/scripts/workspaces.py 7",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 7 })'"
+  },
+  "custom/ws8": {
+    "exec": "~/.config/waybar/scripts/workspaces.py 8",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 8 })'"
+  }
+}

@@ -4,8 +4,8 @@ Usage: workspaces.py <id>. Listens to Hyprland's event socket, prints JSON lines
 import json, os, socket, sys
 
 WS = int(sys.argv[1])
-# katakana counting: i, ni, sa(n), yo(n), go, ro(ku), na(na), ha(chi), ku, ju(u)
-KANJI = {1: "イ", 2: "ニ", 3: "サ", 4: "ヨ", 5: "ゴ", 6: "ロ", 7: "ナ", 8: "ハ", 9: "ク", 10: "ジ"}
+# Eva lore: zero (Rei / EVA-00), first (EVA-01), two (EVA-02), three (EVA-03), angel, soul, lance, moon
+KANJI = dict(enumerate("零初弐参使魂槍月", start=1))
 MAX_DOTS = 4
 HYPR = f"{os.environ['XDG_RUNTIME_DIR']}/hypr/{os.environ['HYPRLAND_INSTANCE_SIGNATURE']}"
 TRIGGERS = (b"workspace", b"openwindow", b"closewindow", b"movewindow",

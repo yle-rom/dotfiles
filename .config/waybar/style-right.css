@@ -1,0 +1,47 @@
+/* Right bar (config-right): system meters. Inherits the whole left-bar look, adds only its own modules. */
+@import "style.css";
+
+#custom-cpu, #custom-net {
+  font-family: "JetBrainsMono NFM";
+  font-weight: 800;
+  font-size: 12px;
+  padding: 16px 0 0 0;
+}
+
+/* heat: warm = tinted, hot = slow pulse, critical = blink red */
+#custom-cpu.warm { color: @yellow; }
+#custom-cpu.hot { animation: heat 1.6s ease-in-out infinite; }
+#custom-cpu.critical { color: @red; animation: blink 1s steps(1) infinite; }
+@keyframes heat { 50% { color: @red; } }
+
+/* net rain: plain @fg like the rest of the bar */
+#custom-net { color: @fg; }
+#custom-net.busy { color: @fg; }
+
+/* toys (scripts/toys.py) */
+#custom-rain, #custom-pet {
+  font-family: "JetBrainsMono NFM";
+  font-weight: 800;
+  font-size: 12px;
+  padding: 16px 0 0 0;
+}
+#custom-rain { font-family: "Noto Sans CJK JP"; font-weight: 400; font-size: 11px; }
+#custom-pet { color: mix(@fg, white, 0.45); }   /* a touch brighter than the rest */
+#custom-pet.asleep { color: alpha(@fg, 0.5); }
+#custom-pet.hot { color: @red; }
+
+/* workspaces 5-8: same look as 1-4, active marker on the screen edge (right) */
+#custom-ws5, #custom-ws6, #custom-ws7, #custom-ws8 {
+  color: alpha(@fg, 0.45);
+  font-family: "Noto Sans CJK JP", "JetBrainsMono Nerd Font";
+  font-size: 16px;
+  font-weight: 400;            /* Regular */
+  padding: 2px 0 0 0;
+  border-right: 3px solid transparent;
+}
+#custom-ws5.occupied, #custom-ws6.occupied, #custom-ws7.occupied, #custom-ws8.occupied { color: @fg; }
+#custom-ws5.active, #custom-ws6.active, #custom-ws7.active, #custom-ws8.active {
+  color: mix(@fg, white, 0.35);
+  border-right: 3px solid @fg;
+}
+#custom-ws5:hover, #custom-ws6:hover, #custom-ws7:hover, #custom-ws8:hover { color: @bg; background: @red; }

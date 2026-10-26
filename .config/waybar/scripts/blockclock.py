@@ -65,9 +65,10 @@ def month_tooltip(now):
     return "<tt>" + "\n".join(rows) + f"</tt>\n\n{now:%A %d %B · week %V}"
 
 
-style = sys.argv[1] if len(sys.argv) > 1 else "block"
-draw, tick = {"cjk": (cjk, 1), "block": (block, 1)}[style]  # tick: seconds between redraws
-while True:
-    now = datetime.now()
-    print(json.dumps({"text": draw(now), "tooltip": month_tooltip(now)}), flush=True)
-    time.sleep(tick - time.time() % tick + 0.05)  # wake just after the next second / minute boundary
+if __name__ == "__main__":  # guard: dayclock.py imports month_tooltip from here
+    style = sys.argv[1] if len(sys.argv) > 1 else "block"
+    draw, tick = {"cjk": (cjk, 1), "block": (block, 1)}[style]  # tick: seconds between redraws
+    while True:
+        now = datetime.now()
+        print(json.dumps({"text": draw(now), "tooltip": month_tooltip(now)}), flush=True)
+        time.sleep(tick - time.time() % tick + 0.05)  # wake just after the next second / minute boundary

@@ -15,11 +15,12 @@
     "battery#percentage",
     "pulseaudio#bar",
     "pulseaudio#icon",
-    "custom/weather"
+    "custom/daybar",
+    "custom/daytime",
+    "custom/weather",
+    "custom/sync"
   ],
-  "modules-center": [
-    "custom/blockclock"
-  ],
+  "modules-center": [],
   "modules-right": [
     "custom/emergency",
     "custom/cava",
@@ -168,6 +169,27 @@
     "escape": false,
     "justify": "center",
     "on-click": "xdg-open https://wttr.in"
+  },
+  "custom/daybar": {
+    "exec": "~/.config/waybar/scripts/dayclock.py bar",
+    "return-type": "json",
+    "rotate": 90,
+    "justify": "center",
+    "on-click": "~/.config/waybar/scripts/calpopup.py"
+  },
+  "custom/daytime": {
+    "exec": "~/.config/waybar/scripts/dayclock.py time",
+    "return-type": "json",
+    "escape": false,
+    "justify": "center",
+    "on-click": "~/.config/waybar/scripts/calpopup.py"
+  },
+  "custom/sync": {
+    "exec": "~/.config/waybar/scripts/toys.py sync",
+    "return-type": "json",
+    "escape": false,
+    "justify": "center",
+    "tooltip": false
   },
   "custom/blockclock": {
     "exec": "~/.config/waybar/scripts/blockclock.py",

@@ -7,7 +7,7 @@ Location: auto from IP. To pin it, set LOCATION below (e.g. "Ioannina").
 import json, os, sys, time, urllib.request
 from datetime import datetime
 
-LOCATION = ""
+LOCATION = "Ioannina"
 CACHE = os.path.join(os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache")), "waybar-weather.json")
 
 # Solid icon set (Material Design), to match the solid heart / vinyl
