@@ -14,15 +14,19 @@ hl.bind(mainMod .. " + " .. "M", hl.dsp.exec_cmd("spotify"))
 
 --bind = $mainMod, A, exec, $HOME/.local/src/magi-app/launch.sh
 
-hl.bind(mainMod .. " + " .. "A", hl.dsp.exec_cmd("$HOME/.local/src/magi_AI/launch.sh"))
+hl.bind(mainMod .. " + " .. "A", hl.dsp.exec_cmd("$HOME/.local/src/magi_ai/launch.sh"))
 
 hl.bind(mainMod .. " + " .. "U", hl.dsp.exec_cmd("quickshell -c hyprquickpaper"))
 
-hl.bind(mainMod .. " + " .. "I", hl.dsp.exec_cmd("~/.local/bin/magi-toggle"))
+hl.bind(mainMod .. " + " .. "I", hl.dsp.exec_cmd("~/.local/bin/dashboard-toggle"))
 
 hl.bind(mainMod .. " + " .. "S", hl.dsp.exec_cmd("hyprshot -m region --clipboard"))
 
-hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd("killall waybar || waybar"))
+-- two waybars: B = left (default config), N = right (config-right). pkill -fx / ^ anchor so each only hits its own bar
+hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd("pkill -fx waybar || waybar"))
+
+local rightBar = "waybar -c ~/.config/waybar/config-right -s ~/.config/waybar/style-right.css"
+hl.bind(mainMod .. " + " .. "N", hl.dsp.exec_cmd("pkill -f '^waybar -c .*config-right' || " .. rightBar))
 
 hl.bind(
 	mainMod .. " + " .. "V",
