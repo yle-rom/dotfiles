@@ -7,7 +7,7 @@ HISTSIZE=5000
 SAVEHIST=5000
 [[ -f ~/.histfile ]] && rm -f ~/.histfile 
 # Prompt
-PROMPT='%K{0}%B%F{3}%n@%m %~ ツ%f%b%E%k '
+PROMPT=$'%F{3}NERV // %n@%m :: %~\n└▸%f '
 
 # Vim motions
 #bindkey -v
