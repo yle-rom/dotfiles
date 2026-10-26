@@ -29,3 +29,11 @@ white   = '{color15}'
 [colors.selection]
 text = '{color0}'
 background = '{color3}'
+
+[colors.hints.start]
+foreground = '{color0}'
+background = '{color3}'
+
+[colors.hints.end]
+foreground = '{color0}'
+background = '{color7}'
