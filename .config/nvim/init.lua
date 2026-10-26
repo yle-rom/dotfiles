@@ -99,6 +99,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.hl.on_yank() end,
 })
 
+vim.api.nvim_create_autocmd('SwapExists', {
+  desc = 'Delete stale swap files: owner process dead and file newer than swap',
+  group = vim.api.nvim_create_augroup('stale-swap', { clear = true }),
+  callback = function(args)
+    local info = vim.fn.swapinfo(vim.v.swapname)
+    if info.error or info.host ~= vim.uv.os_gethostname() then return end
+    local owner_dead = info.pid == 0 -- swapinfo() reports 0 when the owner isn't running
+    local file_newer = vim.fn.getftime(vim.fn.fnamemodify(args.file, ':p')) > info.mtime
+    if owner_dead and file_newer then vim.v.swapchoice = 'd' end
+  end,
+})
+
 -- lazy bootstrap
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
