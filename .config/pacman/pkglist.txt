@@ -37,6 +37,7 @@ hyprpolkitagent
 hyprshot
 imv
 informant
+intel-ucode
 jdk21-openjdk
 keyd
 kitty
