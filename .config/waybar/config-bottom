@@ -8,10 +8,13 @@
     "custom/prev",
     "custom/play",
     "custom/next",
-    "custom/track",
-    "custom/pet"
+    "custom/track"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "custom/magi-gpu",
+    "custom/magi-cpu",
+    "custom/magi-ram"
+  ],
   "modules-right": [
     "custom/cava"
   ],
@@ -47,10 +50,19 @@
     "return-type": "json",
     "tooltip": false
   },
-  "custom/pet": {
-    "exec": "~/.config/waybar/scripts/media.py pet",
+  "custom/magi-gpu": {
+    "exec": "~/.config/waybar/scripts/magi.py gpu",
     "return-type": "json",
-    "escape": false,
+    "tooltip": false
+  },
+  "custom/magi-cpu": {
+    "exec": "~/.config/waybar/scripts/magi.py cpu",
+    "return-type": "json",
+    "tooltip": false
+  },
+  "custom/magi-ram": {
+    "exec": "~/.config/waybar/scripts/magi.py ram",
+    "return-type": "json",
     "tooltip": false
   }
 }

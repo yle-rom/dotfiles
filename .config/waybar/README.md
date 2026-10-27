@@ -7,7 +7,7 @@ NERV frame: four bars around the screen, started by `scripts/frame.sh` (hypr `au
 │ EVA-01 SYNC 0.0%        MON 26 OCT ██████░░░░ 20:49     ♥ 63  ◉ 80  🔥 57°  ◯ 11° CLEAR │
 left                                                                          right
 power · kana rain · ws 1-4                                    power · net stream · ws 5-8
-│ 󰒮 󰏤 󰒭  artist — title ████░░░░   pet walks here …            ▂▃▅▇▅▃▂ cava │
+│ 󰒮 󰏤 󰒭  artist — title ████░░░░   MELCHIOR 承認 BALTHASAR 承認 CASPER 承認   ▂▃▅▇▅▃▂ cava │
 └─ bottom ──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -16,12 +16,12 @@ power · kana rain · ws 1-4                                    power · net str
 | left | `config-left` + `style-left.css` | power, katakana rain (`toys.py rain 56`), emergency watcher (no label), ws 1-4 |
 | right | `config-right` + `style-right.css` | power, net stream (`sysmon.py net 77`), ws 5-8 |
 | top | `config-top` + `style-top.css` | `EVA-01` (static), sync · date + day meter + time · battery, volume, cpu temp, weather + moon |
-| bottom | `config-bottom` + `style-bottom.css` | prev/play/next, track + progress, pet · cava |
+| bottom | `config-bottom` + `style-bottom.css` | prev/play/next, track + progress · MAGI vote (gpu, cpu, ram) · cava |
 
 `style.css` is the shared base (colors, fonts, workspace/power styles, emergency import); every
 `style-*.css` imports it and adds that bar's own line and modules.
 All four bars use ShureTechMono Nerd Font Mono (one `window#waybar.<pos> *` rule each, CJK fallback
-for kanji); braille (pet) and blocks (cava) stay JetBrains, kana rain stays Noto CJK.
+for kanji); blocks (cava) stay JetBrains, kana rain stays Noto CJK.
 
 ## frame.sh
 `frame.sh start|stop|toggle`. **Start order matters**: layer-shell exclusive zones stack in start
@@ -67,7 +67,8 @@ Battery ≤10% + discharging → every bar turns red and the top clock becomes a
 | weather.py --top (+moon.py) | moon glyph, temp, condition; pinned to Ioannina; click → wttr.in |
 | sysmon.py cpu-top\|net [rows]\|cpu | `cpu-top`: fire icon + temp (load in tooltip); `net`: braille rain; `cpu`: old waterfall (unused) |
 | toys.py sync-top\|rain [rows]\|sync\|pet | `sync-top`: one-line sync ratio; `rain`: katakana rain; `sync`/`pet`: old vertical versions (unused) |
-| media.py ctl prev\|play\|next / track / pet | media buttons (playerctl), title + progress, bottom-bar pet |
+| media.py ctl prev\|play\|next / track / pet | media buttons (playerctl), title + progress; `pet`: old bottom-bar pet (unused) |
+| magi.py gpu\|cpu\|ram | MAGI vote: MELCHIOR (gpu), BALTHASAR (cpu), CASPER (ram) |
 | cava.py (+cava.conf) | audio visualizer, 32 bars, block glyphs |
 | emergency.sh (+on/off css) | see above |
 | calpopup.py | calendar popup on clock click |
@@ -92,7 +93,12 @@ and block characters, so a "pixel grid" is just a list of rows turned into chara
   ≥130% blinks red. USB keyboards aren't counted (different IRQ). Number is right-padded
   so the bar doesn't shift.
 
-**pet** `media.py pet` (sprites, typing meter and helpers imported from toys.py)
+**MAGI vote** `magi.py gpu|cpu|ram` (one module each, polled every 2 s, printed only on change)
+- Vote = worst of temp and load: 承認 approve, 警告 warning (yellow), 否決 reject (red); gpu 休止 when asleep.
+- Thresholds (warn/reject): gpu 75°/85° or 80%/95% load; cpu 75°/90° or 80%/95%; ram 75%/90% used.
+- GPU: reads `power/runtime_status` first and skips `nvidia-smi` unless active, so polling never wakes the dGPU.
+
+**pet** (unused since 2026-10-27, replaced by MAGI) `media.py pet` (sprites, typing meter and helpers imported from toys.py)
 - 8x6 dot sprites (open / blink / step / sleep) on an 8-dot-tall strip = 2 braille lines,
   walking left/right, pausing and turning at random, blinking every ~4 s.
 - Track width = `AVAIL` (926px, measured: title start x=116 → 12px before cava x=1066) minus

@@ -1,4 +1,4 @@
-/* Bottom frame bar (config-bottom): media buttons, track + progress, pet | cava. */
+/* Bottom frame bar (config-bottom): media buttons, track + progress | MAGI vote | cava. */
 @import "style.css";
 
 window#waybar { border: none; border-top: 1px solid alpha(@fg, 0.6); }
@@ -16,10 +16,11 @@ window#waybar.bottom * { font-family: "ShureTechMono Nerd Font Mono", "Noto Sans
 #custom-track { font-weight: 800; font-size: 12px; padding: 2px 0 0 12px; }
 #custom-track.paused { color: alpha(@fg, 0.5); }
 
-/* media.py pet: JetBrains braille (ShureTech's dots merge and hide the eyes);
-   2 lines at line_height 1.0 sit low, so lift with a negative margin */
-window#waybar.bottom #custom-pet { font-family: "JetBrainsMono NFM"; }
-#custom-pet { padding: 0 0 0 12px; margin-top: -8px; color: mix(@fg, white, 0.45); }
+/* magi.py gpu|cpu|ram: each computer colors on its own spike (warning yellow, reject red); the bar stays as is */
+#custom-magi-gpu, #custom-magi-cpu, #custom-magi-ram { font-weight: 800; font-size: 12px; padding: 0 14px; color: @fg; }
+#custom-magi-gpu.warm, #custom-magi-cpu.warm, #custom-magi-ram.warm { color: @yellow; }
+#custom-magi-gpu.hot, #custom-magi-cpu.hot, #custom-magi-ram.hot { color: @red; }
+#custom-magi-gpu.sleep { color: alpha(@fg, 0.35); }
 
 /* cava: JetBrains blocks leave a thin gap between bars; 20px = gaps_out, right edge lines up with a tiled window */
 window#waybar.bottom #custom-cava { font-family: "JetBrainsMono NFM"; font-size: 23px; letter-spacing: 1px; }
