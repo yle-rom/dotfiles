@@ -3,8 +3,7 @@
 -- Autostart
 hl.on("hyprland.start", function()
 	hl.exec_cmd("nm-applet --indicator &")
-	hl.exec_cmd("waybar &")
-	hl.exec_cmd("waybar -c ~/.config/waybar/config-right -s ~/.config/waybar/style-right.css &")
+	hl.exec_cmd("~/.config/waybar/scripts/frame.sh start")   -- 4-bar waybar frame
 	hl.exec_cmd("~/.local/bin/rice --apply")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")

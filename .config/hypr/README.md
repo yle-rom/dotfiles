@@ -8,8 +8,8 @@ Apply changes: `hyprctl reload`, then `hyprctl configerrors` (empty = ok).
 |---|---|
 | hyprland.lua | monitors, then `require`s the modules below in this order |
 | env.lua | env vars: cursor, nvidia/DRM, XDG session |
-| autostart.lua | `hyprland.start` hook: waybar, nm-applet, `rice --apply`, wallpaper; `config.reloaded` hook: `rice --apply` (keeps the theme border) |
-| keybinds.lua | all binds |
+| autostart.lua | `hyprland.start` hook: waybar frame (`~/.config/waybar/scripts/frame.sh start`), nm-applet, `rice --apply`, wallpaper; `config.reloaded` hook: `rice --apply` (keeps the theme border) |
+| keybinds.lua | all binds (`mainMod+B` = waybar frame on/off, all 4 bars) |
 | windowrules.lua | window rules (e.g. dashboard window) |
 | lookandfeel.lua | gaps, borders, decoration, animations |
 | input.lua | keyboard/touchpad |

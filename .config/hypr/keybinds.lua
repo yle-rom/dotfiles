@@ -22,11 +22,8 @@ hl.bind(mainMod .. " + " .. "I", hl.dsp.exec_cmd("~/.local/bin/dashboard-toggle"
 
 hl.bind(mainMod .. " + " .. "S", hl.dsp.exec_cmd("hyprshot -m region --clipboard"))
 
--- two waybars: B = left (default config), N = right (config-right). pkill -fx / ^ anchor so each only hits its own bar
-hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd("pkill -fx waybar || waybar"))
-
-local rightBar = "waybar -c ~/.config/waybar/config-right -s ~/.config/waybar/style-right.css"
-hl.bind(mainMod .. " + " .. "N", hl.dsp.exec_cmd("pkill -f '^waybar -c .*config-right' || " .. rightBar))
+-- B = the whole 4-bar waybar frame on/off (frame.sh keeps the start order: sides first, then top/bottom)
+hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd("~/.config/waybar/scripts/frame.sh toggle"))
 
 hl.bind(
 	mainMod .. " + " .. "V",
