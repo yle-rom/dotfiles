@@ -8,7 +8,7 @@ window#waybar.bottom * { font-family: "ShureTechMono Nerd Font Mono", "Noto Sans
 
 /* media.py ctl prev|play|next */
 #custom-prev, #custom-play, #custom-next { font-size: 14px; padding: 0 6px; color: @fg; }
-#custom-prev { padding-left: 14px; }
+#custom-prev { padding-left: 20px; }   /* 20px = gaps_out, lines up with the top bar and a tiled window */
 #custom-prev:hover, #custom-play:hover, #custom-next:hover { color: @red; }
 #custom-play.paused { color: alpha(@fg, 0.6); }
 
