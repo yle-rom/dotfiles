@@ -1,0 +1,76 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "height": 35,
+  "margin": "0",
+  "modules-left": [
+    "custom/unit",
+    "custom/sync"
+  ],
+  "modules-center": [
+    "custom/clock"
+  ],
+  "modules-right": [
+    "battery#top",
+    "pulseaudio#top",
+    "custom/cpu",
+    "custom/weather"
+  ],
+  "custom/clock": {
+    "exec": "~/.config/waybar/scripts/dayclock.py top",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "~/.config/waybar/scripts/calpopup.py"
+  },
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather.py --top",
+    "return-type": "json",
+    "interval": 900,
+    "escape": false,
+    "on-click": "xdg-open https://wttr.in"
+  },
+  "custom/sync": {
+    "exec": "~/.config/waybar/scripts/toys.py sync-top",
+    "return-type": "json",
+    "escape": false,
+    "tooltip": false
+  },
+  "custom/unit": {
+    "format": "<span font_family='JetBrainsMono NFP' size='13pt'>​</span>EVA-01",
+    "tooltip": false
+  },
+  "battery#top": {
+    "format": "<span font_family='JetBrainsMono NFP' size='13pt'>{icon}</span> {capacity}",
+    "format-charging": "<span font_family='JetBrainsMono NFP' size='13pt'>󰻹</span> {capacity}",
+    "format-icons": [
+      "󰋕",
+      "󰛞",
+      "󰋑"
+    ],
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "on-click": "~/.local/bin/magitl",
+    "tooltip-format": "Battery {capacity}% · {timeTo}"
+  },
+  "pulseaudio#top": {
+    "format": "<span font_family='JetBrainsMono NFP' size='13pt'>{icon}</span> {volume}",
+    "format-muted": "<span font_family='JetBrainsMono NFP' size='13pt'>󰀥</span> 0",
+    "format-icons": {
+      "default": [
+        "󰀥"
+      ]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "tooltip-format": "Volume {volume}%"
+  },
+  "custom/cpu": {
+    "exec": "~/.config/waybar/scripts/sysmon.py cpu-top",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "alacritty -e nvtop"
+  }
+}

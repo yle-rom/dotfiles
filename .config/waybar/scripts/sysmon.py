@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Animated system meters for the right bar. Usage: sysmon.py cpu|net. Streams JSON lines at FPS.
+"""System meters. Usage: sysmon.py cpu|cpu-top|net [net rows]. Streams JSON lines at FPS.
   cpu  load "waterfall" above a fire icon + temp (like the left bar's meters): one row per sample, newest on top, scrolling down
+  cpu-top  top bar: fire icon + temp, sent only on change (keeps the tooltip working)
   net  a braille "data rain": dots fall for download, rise for upload, density = rate"""
 import glob, json, math, random, socket, subprocess, sys, time
 from collections import deque
 
 FPS = 4
 ROWS = 12                    # cpu waterfall height in text rows
-NET_ROWS = 18                # net rain height in text rows
+NET_ROWS = int(sys.argv[2]) if len(sys.argv) > 2 else 18   # net rain height in text rows (right bar passes 77)
 WIDTH = 4                    # cells per row (bar is 35px, 12px mono ~7px a cell)
 EIGHTHS = " ▏▎▍▌▋▊▉█"                                  # left-aligned 0..8 eighths
 EIGHTHS_R = " ▕\U0001FB87\U0001FB88▐\U0001FB89\U0001FB8A\U0001FB8B█"  # right-aligned (Legacy Computing block)
@@ -68,6 +69,22 @@ def cpu():
         avg = sum(hist) / ROWS
         tip = f"CPU · {temp}°C package · load {avg:.0%} (last {ROWS / FPS:.1f}s)"
         emit(f"{waterfall(hist)}\n<span font_family='JetBrainsMono NFM' size='13.5pt'>\U000F0238</span>\n{temp}°", tip, level(temp, 70, 85, 95))
+
+
+def cpu_top():  # top bar: fire icon + temp; sent only when it changes, so the tooltip (load) still shows
+    tpath, last = cpu_temp_path(), None
+    busy0, total0 = cpu_times()
+    while True:
+        time.sleep(1)
+        busy, total = cpu_times()
+        load = (busy - busy0) / max(1, total - total0)
+        busy0, total0 = busy, total
+        temp = int(open(tpath).read()) // 1000 if tpath else 0
+        text = f"<span font_family='JetBrainsMono NFP' size='13pt'>\U000F0238</span> {temp}°"   # same font/size as weather's moon: shared baseline
+        cls = level(temp, 70, 85, 95)
+        if (text, cls) != last:
+            emit(text, f"CPU · {temp}°C package · load {load:.0%}", cls)
+            last = (text, cls)
 
 
 # ---------- net ----------
@@ -142,4 +159,4 @@ def net():
         emit(braille(grid), f"↓ {human(rbps)}/s  ↑ {human(tbps)}/s\n{tip}", cls)
 
 
-{"cpu": cpu, "net": net}[sys.argv[1]]()
+{"cpu": cpu, "cpu-top": cpu_top, "net": net}[sys.argv[1]]()

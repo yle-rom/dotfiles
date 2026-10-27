@@ -1,0 +1,56 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "bottom",
+  "height": 35,
+  "margin": "0",
+  "modules-left": [
+    "custom/prev",
+    "custom/play",
+    "custom/next",
+    "custom/track",
+    "custom/pet"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/cava"
+  ],
+  "custom/prev": {
+    "exec": "~/.config/waybar/scripts/media.py ctl prev",
+    "return-type": "json",
+    "on-click": "playerctl previous",
+    "tooltip": false
+  },
+  "custom/play": {
+    "exec": "~/.config/waybar/scripts/media.py ctl play",
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "tooltip": false
+  },
+  "custom/next": {
+    "exec": "~/.config/waybar/scripts/media.py ctl next",
+    "return-type": "json",
+    "on-click": "playerctl next",
+    "tooltip": false
+  },
+  "custom/track": {
+    "exec": "~/.config/waybar/scripts/media.py track",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "tooltip": false
+  },
+  "custom/cava": {
+    "exec": "~/.config/waybar/scripts/cava.py",
+    "return-type": "json",
+    "tooltip": false
+  },
+  "custom/pet": {
+    "exec": "~/.config/waybar/scripts/media.py pet",
+    "return-type": "json",
+    "escape": false,
+    "tooltip": false
+  }
+}

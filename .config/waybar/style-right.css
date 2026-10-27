@@ -1,34 +1,27 @@
-/* Right bar (config-right): system meters. Inherits the whole left-bar look, adds only its own modules. */
+/* Right frame bar (config-right): power, net stream, ws 5-8. Inherits the shared look from style.css. */
 @import "style.css";
 
-#custom-cpu, #custom-net {
-  font-family: "JetBrainsMono NFM";
+/* inner line as a background layer; 34px @bg covers hide its ends so the corners join the top/bottom lines as an L */
+window#waybar {
+  border: none;
+  background-image: linear-gradient(@bg, @bg), linear-gradient(@bg, @bg),
+                    linear-gradient(alpha(@fg, 0.6), alpha(@fg, 0.6));
+  background-size: 1px 34px, 1px 34px, 1px 100%;
+  background-position: left top, left bottom, left top;
+  background-repeat: no-repeat;
+}
+
+/* one family for the whole bar (the window class beats the per-module rules in style.css); CJK falls back for kanji */
+window#waybar.right * { font-family: "ShureTechMono Nerd Font Mono", "Noto Sans CJK JP"; }
+
+/* net rain (sysmon.py net 77): plain @fg like the rest of the bar */
+#custom-net {
   font-weight: 800;
   font-size: 12px;
   padding: 16px 0 0 0;
+  color: @fg;
 }
-
-/* heat: warm = tinted, hot = slow pulse, critical = blink red */
-#custom-cpu.warm { color: @yellow; }
-#custom-cpu.hot { animation: heat 1.6s ease-in-out infinite; }
-#custom-cpu.critical { color: @red; animation: blink 1s steps(1) infinite; }
-@keyframes heat { 50% { color: @red; } }
-
-/* net rain: plain @fg like the rest of the bar */
-#custom-net { color: @fg; }
 #custom-net.busy { color: @fg; }
-
-/* toys (scripts/toys.py) */
-#custom-rain, #custom-pet {
-  font-family: "JetBrainsMono NFM";
-  font-weight: 800;
-  font-size: 12px;
-  padding: 16px 0 0 0;
-}
-#custom-rain { font-family: "Noto Sans CJK JP"; font-weight: 400; font-size: 11px; }
-#custom-pet { color: mix(@fg, white, 0.45); }   /* a touch brighter than the rest */
-#custom-pet.asleep { color: alpha(@fg, 0.5); }
-#custom-pet.hot { color: @red; }
 
 /* workspaces 5-8: same look as 1-4, active marker on the screen edge (right) */
 #custom-ws5, #custom-ws6, #custom-ws7, #custom-ws8 {

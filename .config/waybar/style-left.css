@@ -1,0 +1,18 @@
+/* Left frame bar (config-left): power, katakana rain, ws 1-4. Inherits the shared look from style.css. */
+@import "style.css";
+
+/* inner line as a background layer; 34px @bg covers hide its ends so the corners join the top/bottom lines as an L */
+window#waybar {
+  border: none;
+  background-image: linear-gradient(@bg, @bg), linear-gradient(@bg, @bg),
+                    linear-gradient(alpha(@fg, 0.6), alpha(@fg, 0.6));
+  background-size: 1px 34px, 1px 34px, 1px 100%;
+  background-position: right top, right bottom, right top;
+  background-repeat: no-repeat;
+}
+
+/* one family for the whole bar (the window class beats the per-module rules in style.css); CJK falls back for kanji */
+window#waybar.left * { font-family: "ShureTechMono Nerd Font Mono", "Noto Sans CJK JP"; }
+
+/* katakana rain (toys.py rain 56): half-width kana need the CJK font */
+window#waybar.left #custom-rain { font-family: "Noto Sans CJK JP"; font-weight: 400; font-size: 11px; padding: 16px 0 0 0; }

@@ -1,0 +1,26 @@
+/* Top frame bar (config-top): EVA-01 + sync | date, day meter, time | health, audio, cpu, weather. */
+@import "style.css";
+
+window#waybar { border: none; border-bottom: 1px solid alpha(@fg, 0.6); }
+
+/* one family for the whole bar (the window class beats the per-module rules in style.css); CJK falls back for kanji */
+window#waybar.top * { font-family: "ShureTechMono Nerd Font Mono", "Noto Sans CJK JP"; }
+
+/* 20px edge padding = hyprland gaps_out: the first/last label lines up with a tiled window's edge */
+#custom-unit { font-weight: 800; font-size: 12px; color: alpha(@fg, 0.6); padding: 0 0 0 20px; }   /* static EVA-01, dim like OVERCAST */
+#custom-sync { font-weight: 800; font-size: 12px; padding: 0 0 0 8px; }                           /* reads: EVA-01 SYNC 0.0% */
+#custom-sync.berserk { color: @red; animation: blink 0.5s steps(1) infinite; }                    /* >= 130% */
+
+#custom-clock { font-weight: 800; font-size: 12px; }
+/* emergency: the clock turns into a blinking banner (dayclock.py top, class emergency) */
+#custom-clock.emergency { color: @bg; background: @red; padding: 0 10px; animation: blink 1s steps(1) infinite; }
+
+/* right group: same 20px gap after health, audio and cpu */
+#battery.top, #pulseaudio.top, #custom-cpu { font-weight: 800; font-size: 12px; padding: 0 20px 0 0; }
+#pulseaudio.top.muted { color: alpha(@fg, 0.3); }
+#custom-cpu.warm { color: @yellow; }
+#custom-cpu.hot { animation: heat 1.6s ease-in-out infinite; }
+#custom-cpu.critical { color: @red; animation: blink 1s steps(1) infinite; }
+@keyframes heat { 50% { color: @red; } }
+#custom-weather { font-weight: 800; font-size: 12px; padding: 0 20px 0 0; }   /* last on the right: gaps_out */
+#custom-weather.stale { color: alpha(@fg, 0.5); }

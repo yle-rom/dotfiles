@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Right-bar toys. Usage: toys.py sync|rain|pet [pet track height in dots, default 28]
+"""Bar toys. Usage: toys.py sync|sync-top|rain [rows]|pet [pet track height in dots, default 28]
+  sync-top  one-line SYNC readout for the top bar
   sync  Eva-style "sync ratio" = your typing speed in wpm (100 wpm = 100%), from the keyboard's interrupt count
   rain  half-width katakana falling Matrix-style
   pet   a braille creature: wanders, blinks, sleeps at night or after 2 min without typing, sweats at >= 80°C,
         bounces faster the higher the sync ratio (2x from 60%, 3x from 100%)"""
 import collections, glob, json, random, sys, time
 
-MODE = sys.argv[1]
+MODE = sys.argv[1] if len(sys.argv) > 1 else ""   # empty when imported (media.py reuses the pet)
 BIT = {(0, 0): 0x01, (0, 1): 0x02, (0, 2): 0x04, (1, 0): 0x08, (1, 1): 0x10, (1, 2): 0x20, (0, 3): 0x40, (1, 3): 0x80}
 W = 8                                          # dot columns (4 braille cells = the bar's width)
 
@@ -80,7 +81,7 @@ def sync():
 # ---------- katakana rain: half-width kana falling, bright head, fading trail ----------
 def rain():
     KANA = [chr(c) for c in range(0xFF66, 0xFF9E)]
-    COLS, ROWS = 4, 14
+    COLS, ROWS = 4, int(sys.argv[2]) if len(sys.argv) > 2 else 14   # rows: left bar uses 56 to match the net stream's height
     heads = [random.randint(-ROWS, ROWS) for _ in range(COLS)]
     lens = [random.randint(4, 9) for _ in range(COLS)]
     speed = [random.choice((1, 1, 2)) for _ in range(COLS)]
@@ -119,6 +120,8 @@ PET = {
     "sleep": ["........", "..#..#..", ".######.", "##.##.##", "########", "########"],
 }
 PET["sleep"][3] = "#..##..#"
+# sleep z's drawn in dots above the head: (x, rows up from the pet's top, glyph); they appear one by one, then repeat
+ZZZ = [(5, 3, ["###", ".#.", "###"]), (2, 8, ["###", ".#.", "###"]), (4, 14, ["####", "..#.", ".#..", "####"])]
 
 
 def cpu_temp():
@@ -144,7 +147,7 @@ def pet():
         speed = 1 + (sync >= 60) + (sync >= 100)                     # 1 step/frame calm, 2 from 60%, 3 from 100% (you type ~84 wpm)
         excited = speed > 1
         if asleep:
-            sprite = PET["sleep"]
+            sprite, y = PET["sleep"], H - 6                          # teleports to the bottom of the track, just above the workspaces
         else:
             if excited:                                              # no dawdling while you type fast
                 pause = 0
@@ -164,15 +167,35 @@ def pet():
             for x, ch in enumerate(row):
                 if ch == "#":
                     g[y + dy][x] = True
-        extra = ""
         if asleep:
-            extra = ["z", " z", "  Z"][tick // 4 % 3]
+            for x, up, glyph in ZZZ[:tick // 4 % 3 + 1]:
+                for dy, row in enumerate(glyph):
+                    for dx, ch in enumerate(row):
+                        if ch == "#":
+                            g[y - up + dy][x + dx] = True
         if hot and not asleep and tick % 4 < 2 and y > 0:
             g[y - 1][7] = True                                       # sweat drop
-        text = f"<span size='7pt'>{extra or ' '}</span>\n" + tight(braille(g))
+        text = "<span size='7pt'> </span>\n" + tight(braille(g))
         mood = "asleep" if asleep else "hot" if hot else "excited" if excited else "awake"
         emit(text, mood, f"pet · {mood}")
         time.sleep(1 / 6)
 
 
-{"sync": sync, "rain": rain, "pet": pet}[MODE]()
+def sync_top():   # horizontal: SYNC 84.3%, fixed width so the bar doesn't shift
+    typing = Typing()
+    last = None
+    while True:
+        ratio = typing.update()
+        shown = max(0.0, ratio + (random.uniform(-0.3, 0.3) if ratio > 1 else 0))
+        cls = "berserk" if shown >= 130 else ""
+        # zero-width strut in the weather moon's font/size: same line height, so every top-bar label shares a baseline
+        text = f"<span font_family='JetBrainsMono NFP' size='13pt'>\u200b</span><span alpha='60%'>SYNC</span> " + f"{shown:.1f}%".ljust(6)
+        out = (text, cls, f"sync ratio {shown:.1f}% · {typing.wpm:.0f} wpm")
+        if out != last:
+            emit(*out)
+            last = out
+        time.sleep(1 / 4)
+
+
+if __name__ == "__main__":
+    {"sync": sync, "sync-top": sync_top, "rain": rain, "pet": pet}[MODE]()

@@ -2,17 +2,15 @@
   "reload_style_on_change": true,
   "layer": "top",
   "position": "right",
-  "margin-top": 18,
-  "margin-bottom": 18,
+  "margin-top": 0,
+  "margin-bottom": 0,
   "margin-left": 0,
-  "margin-right": 17,
+  "margin-right": 0,
   "width": 35,
   "spacing": 0,
   "modules-left": [
     "custom/power",
-    "custom/cpu",
-    "custom/net",
-    "custom/pet"
+    "custom/net"
   ],
   "modules-right": [
     "custom/ws5",
@@ -25,27 +23,8 @@
     "on-click": "~/.local/bin/powermenu",
     "tooltip": false
   },
-  "custom/cpu": {
-    "exec": "~/.config/waybar/scripts/sysmon.py cpu",
-    "return-type": "json",
-    "escape": false,
-    "justify": "center",
-    "on-click": "alacritty -e nvtop"
-  },
   "custom/net": {
-    "exec": "~/.config/waybar/scripts/sysmon.py net",
-    "return-type": "json",
-    "escape": false,
-    "justify": "center"
-  },
-  "custom/rain": {
-    "exec": "~/.config/waybar/scripts/toys.py rain",
-    "return-type": "json",
-    "escape": false,
-    "justify": "center"
-  },
-  "custom/pet": {
-    "exec": "~/.config/waybar/scripts/toys.py pet 92",
+    "exec": "~/.config/waybar/scripts/sysmon.py net 77",
     "return-type": "json",
     "escape": false,
     "justify": "center"

@@ -3,7 +3,8 @@
 Location: auto from IP. To pin it, set LOCATION below (e.g. "Ioannina").
   weather.py            -> weather icon + temp
   weather.py --moon     -> moon phase glyph + temp; tooltip = moon + weather
-  weather.py --no-icon  -> temp only (e.g. with the moon image module above it)"""
+  weather.py --no-icon  -> temp only (e.g. with the moon image module above it)
+  weather.py --top      -> one line for the top bar: moon glyph, temp, condition"""
 import json, os, sys, time, urllib.request
 from datetime import datetime
 
@@ -85,6 +86,14 @@ if mode == "--moon":
     import moon
     icon_markup = f"<span font_family='JetBrainsMono NFP' size='14pt'>{moon.glyph()}\u200a</span>\n"
     tooltip = moon.tooltip() + "\n\n" + tooltip
+elif mode == "--top":   # horizontal: moon  temp  condition
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import moon
+    tooltip = moon.tooltip() + "\n\n" + tooltip
+    print(json.dumps({"text": f"<span font_family='JetBrainsMono NFP' size='13pt'>{moon.glyph()}</span> {cur['temp_C']}°  "
+                      f"<span alpha='60%'>{cur['weatherDesc'][0]['value'].strip().upper()}</span>",
+                      "tooltip": tooltip, "class": "stale" if stale else "ok"}))
+    raise SystemExit
 elif mode == "--no-icon":
     icon_markup = ""
 else:

@@ -1,0 +1,27 @@
+/* Bottom frame bar (config-bottom): media buttons, track + progress, pet | cava. */
+@import "style.css";
+
+window#waybar { border: none; border-top: 1px solid alpha(@fg, 0.6); }
+
+/* one family for the whole bar (the window class beats the per-module rules in style.css); CJK falls back for kanji */
+window#waybar.bottom * { font-family: "ShureTechMono Nerd Font Mono", "Noto Sans CJK JP"; }
+
+/* media.py ctl prev|play|next */
+#custom-prev, #custom-play, #custom-next { font-size: 14px; padding: 0 6px; color: @fg; }
+#custom-prev { padding-left: 14px; }
+#custom-prev:hover, #custom-play:hover, #custom-next:hover { color: @red; }
+#custom-play.paused { color: alpha(@fg, 0.6); }
+
+/* media.py track; padding-top 2px: measured, title + bar sat ~1-2px above center */
+#custom-track { font-weight: 800; font-size: 12px; padding: 2px 0 0 12px; }
+#custom-track.paused { color: alpha(@fg, 0.5); }
+
+/* media.py pet: JetBrains braille (ShureTech's dots merge and hide the eyes);
+   2 lines at line_height 1.0 sit low, so lift with a negative margin */
+window#waybar.bottom #custom-pet { font-family: "JetBrainsMono NFM"; }
+#custom-pet { padding: 0 0 0 12px; margin-top: -8px; color: mix(@fg, white, 0.45); }
+
+/* cava: JetBrains blocks leave a thin gap between bars; 20px = gaps_out, right edge lines up with a tiled window */
+window#waybar.bottom #custom-cava { font-family: "JetBrainsMono NFM"; font-size: 23px; letter-spacing: 1px; }
+#custom-cava { padding: 0 20px 0 0; color: @fg; }
+#custom-cava.idle { color: alpha(@fg, 0.25); }

@@ -1,0 +1,64 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "left",
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "width": 35,
+  "spacing": 0,
+  "modules-left": [
+    "custom/power",
+    "custom/rain"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/emergency",
+    "custom/ws1",
+    "custom/ws2",
+    "custom/ws3",
+    "custom/ws4"
+  ],
+  "custom/power": {
+    "format": "󰥓",
+    "on-click": "~/.local/bin/powermenu",
+    "tooltip": false
+  },
+  "custom/ws1": {
+    "exec": "~/.config/waybar/scripts/workspaces.py 1",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 1 })'"
+  },
+  "custom/ws2": {
+    "exec": "~/.config/waybar/scripts/workspaces.py 2",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 2 })'"
+  },
+  "custom/ws3": {
+    "exec": "~/.config/waybar/scripts/workspaces.py 3",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 3 })'"
+  },
+  "custom/ws4": {
+    "exec": "~/.config/waybar/scripts/workspaces.py 4",
+    "return-type": "json",
+    "escape": false,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 4 })'"
+  },
+  "custom/emergency": {
+    "exec": "~/.config/waybar/scripts/emergency.sh",
+    "return-type": "json",
+    "interval": 5
+  },
+  "custom/rain": {
+    "exec": "~/.config/waybar/scripts/toys.py rain 56",
+    "return-type": "json",
+    "escape": false,
+    "justify": "center",
+    "tooltip": false
+  }
+}
