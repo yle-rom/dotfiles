@@ -74,6 +74,17 @@ hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "K", hl.dsp.window.move({ direct
 
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "J", hl.dsp.window.move({ direction = "down" }))
 
+-- CTRL + HJKL = resize the active window by 40px (hold to repeat; tiled = moves the split)
+local resizeStep = 40
+
+hl.bind(mainMod .. " + CTRL + H", hl.dsp.window.resize({ x = -resizeStep, y = 0, relative = true }), { repeating = true })
+
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.window.resize({ x = resizeStep, y = 0, relative = true }), { repeating = true })
+
+hl.bind(mainMod .. " + CTRL + K", hl.dsp.window.resize({ x = 0, y = -resizeStep, relative = true }), { repeating = true })
+
+hl.bind(mainMod .. " + CTRL + J", hl.dsp.window.resize({ x = 0, y = resizeStep, relative = true }), { repeating = true })
+
 --bind = $mainMod, 1, workspace, 1
 
 --bind = $mainMod, 2, workspace, 2

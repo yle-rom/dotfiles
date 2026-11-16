@@ -41,7 +41,7 @@ hl.window_rule({
         class = "^(magi-dashboard)$",
     },
     float = true,
-    move = { 0, 0 },
-    size = { 500, 1000 },
+    move = { 35, 35 },
+    size = { 1530, 930 },
     animation = "slide left",
 })

@@ -1,66 +1,66 @@
 ---@module 'hl'
 
 hl.config({
-    general = {
-        gaps_in = 4,
-        gaps_out = 20,
-        border_size = 1,
-        resize_on_border = true,
-        extend_border_grab_area = 15,
-        allow_tearing = false,
-        layout = "master",
-        col = {
-            active_border = { colors = { "rgb(f3701e)", "rgb(e8d8c9)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
-        },
-    },
+	general = {
+		gaps_in = 4,
+		gaps_out = 20,
+		border_size = 1,
+		resize_on_border = true,
+		extend_border_grab_area = 15,
+		allow_tearing = false,
+		layout = "master",
+		col = {
+			active_border = { colors = { "rgb(f3701e)", "rgb(e8d8c9)" }, angle = 45 },
+			inactive_border = "rgba(595959aa)",
+		},
+	},
 })
 
 hl.config({
-    decoration = {
-        rounding = 1,
-        rounding_power = 2,
-        active_opacity = 1.0,
-        inactive_opacity = 0.9,
-        shadow = {
-            enabled = true,
-            range = 15,
-            render_power = 3,
-            color = "rgba(1a1a1aee)",
-        },
-        blur = {
-            enabled = true,
-            size = 4,
-            passes = 2,
-            vibrancy = 0.1696,
-        },
-    },
+	decoration = {
+		rounding = 1,
+		rounding_power = 2,
+		active_opacity = 1.0,
+		inactive_opacity = 0.9,
+		shadow = {
+			enabled = true,
+			range = 15,
+			render_power = 3,
+			color = "rgba(1a1a1aee)",
+		},
+		blur = {
+			enabled = true,
+			size = 4,
+			passes = 2,
+			vibrancy = 0.1696,
+		},
+	},
 })
 
 hl.config({
-    animations = {
-        enabled = true,
-    },
+	animations = {
+		enabled = true,
+	},
 })
 hl.curve("easeOutQuint", {
-    type = "bezier",
-    points = { { 0.23, 1 }, { 0.32, 1 } },
+	type = "bezier",
+	points = { { 0.23, 1 }, { 0.32, 1 } },
 })
 hl.curve("easeInOutCubic", {
-    type = "bezier",
-    points = { { 0.65, 0.05 }, { 0.36, 1 } },
+	type = "bezier",
+	points = { { 0.65, 0.05 }, { 0.36, 1 } },
 })
 hl.curve("linear", {
-    type = "bezier",
-    points = { { 0, 0 }, { 1, 1 } },
+	type = "bezier",
+	points = { { 0, 0 }, { 1, 1 } },
 })
 hl.curve("almostLinear", {
-    type = "bezier",
-    points = { { 0.5, 0.5 }, { 0.75, 1 } },
+	type = "bezier",
+	points = { { 0.5, 0.5 }, { 0.75, 1 } },
 })
 hl.curve("quick", {
-    type = "bezier",
-    points = { { 0.15, 0 }, { 0.1, 1 } },
+	type = "bezier",
+	points = { { 0.15, 0 }, { 0.1, 1 } },
 })
 hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "default" })
 hl.animation({ leaf = "border", enabled = true, speed = 5.39, bezier = "easeOutQuint" })
@@ -81,23 +81,23 @@ hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "a
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
 hl.config({
-    dwindle = {
-        --pseudotile = true
-        preserve_split = true,
-    },
+	dwindle = {
+		--pseudotile = true
+		preserve_split = true,
+	},
 })
 
 hl.config({
-    master = {
-        mfact = 0.6,
-        new_status = "slave",
-    },
+	master = {
+		mfact = 0.7,
+		new_status = "slave",
+	},
 })
 
 hl.config({
-    misc = {
-        force_default_wallpaper = -1,
-        disable_hyprland_logo = true,
-        --vfr = true
-    },
+	misc = {
+		force_default_wallpaper = -1,
+		disable_hyprland_logo = true,
+		--vfr = true
+	},
 })
