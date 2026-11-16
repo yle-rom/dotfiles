@@ -41,6 +41,7 @@ alias v="nvim"
 alias bloodborne="bb_launcher"
 alias copy="wl-copy"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias monkey='/usr/bin/ttyper'
 
 unset zle_bracketed_paste
 

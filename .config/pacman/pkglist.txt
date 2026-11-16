@@ -20,6 +20,7 @@ cpio
 dnsmasq
 docker
 docker-compose
+dosfstools
 edk2-ovmf
 fd
 firefox
@@ -58,6 +59,7 @@ mako
 man-db
 maven
 nano
+ncspot
 neovim
 networkmanager
 nmap
@@ -72,10 +74,12 @@ nwg-look
 ollama-cuda
 openssh
 pacman-contrib
+pass
 pavucontrol
 pipewire-alsa
 pipewire-pulse
 powertop
+protonmail-bridge-core
 protontricks
 pwndbg
 pyright
@@ -100,6 +104,7 @@ strace
 syncthing
 systemd-resolvconf
 tealdeer
+tesseract-data-ell
 tesseract-data-eng
 thunar
 timeshift
@@ -108,6 +113,7 @@ tlp-rdw
 tmux
 tree-sitter-cli
 ttf-jetbrains-mono-nerd
+ttyper
 tumbler
 unrar
 unzip
@@ -121,6 +127,7 @@ wget
 whois
 wikiman
 wireguard-tools
+wiremix
 woff2-font-awesome
 xdg-desktop-portal
 xdg-desktop-portal-hyprland

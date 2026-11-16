@@ -28,6 +28,7 @@ export OLLAMA_FLASH_ATTENTION=1
 
 # GPG
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 
 # PulseAudio
 export PULSE_COOKIE="$XDG_DATA_HOME/pulse/cookie"
