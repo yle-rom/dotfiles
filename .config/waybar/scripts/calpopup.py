@@ -11,7 +11,7 @@ from gi.repository import Gdk, GLib, Gtk, GtkLayerShell
 
 PIDFILE = os.path.join(os.environ.get("XDG_RUNTIME_DIR", "/tmp"), "waybar-calendar.pid")
 COLORS = os.path.expanduser("~/.config/waybar/colors-active.css")
-BAR_EDGE = 17 + 35 + 10  # bar margin-left + bar width + gap
+BAR_EDGE = 0  # flush under the top bar (its exclusive zone already offsets us)
 
 # toggle: if already open, close it and exit
 try:
@@ -57,8 +57,8 @@ Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), provider,
 win = Gtk.Window()
 GtkLayerShell.init_for_window(win)
 GtkLayerShell.set_layer(win, GtkLayerShell.Layer.OVERLAY)
-GtkLayerShell.set_anchor(win, GtkLayerShell.Edge.LEFT, True)
-GtkLayerShell.set_margin(win, GtkLayerShell.Edge.LEFT, BAR_EDGE)
+GtkLayerShell.set_anchor(win, GtkLayerShell.Edge.TOP, True)
+GtkLayerShell.set_margin(win, GtkLayerShell.Edge.TOP, BAR_EDGE)
 GtkLayerShell.set_keyboard_mode(win, GtkLayerShell.KeyboardMode.ON_DEMAND)
 
 cal = Gtk.Calendar(show_week_numbers=True)

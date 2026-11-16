@@ -1,4 +1,4 @@
-/* Right frame bar (config-right): power, net stream, ws 5-8. Inherits the shared look from style.css. */
+/* Right frame bar (config-right): power, katakana rain, ws 5-8. Inherits the shared look from style.css. */
 @import "style.css";
 
 /* inner line as a background layer; 34px @bg covers hide its ends so the corners join the top/bottom lines as an L */
@@ -14,14 +14,8 @@ window#waybar {
 /* one family for the whole bar (the window class beats the per-module rules in style.css); CJK falls back for kanji */
 window#waybar.right * { font-family: "ShureTechMono Nerd Font Mono", "Noto Sans CJK JP"; }
 
-/* net rain (sysmon.py net 77): plain @fg like the rest of the bar */
-#custom-net {
-  font-weight: 800;
-  font-size: 12px;
-  padding: 16px 0 0 0;
-  color: @fg;
-}
-#custom-net.busy { color: @fg; }
+/* katakana rain (toys.py rain 56): same as the left bar; half-width kana need the CJK font */
+window#waybar.right #custom-rain { font-family: "Noto Sans CJK JP"; font-weight: 400; font-size: 11px; padding: 16px 0 0 0; }
 
 /* workspaces 5-8: same look as 1-4, active marker on the screen edge (right) */
 #custom-ws5, #custom-ws6, #custom-ws7, #custom-ws8 {
