@@ -17,7 +17,7 @@ offset = { x = 0, y = 2 }
 draw_bold_text_with_bright_colors = true
 
 [mouse]
-hide_when_typing = true
+#hide_when_typing = true
 
 # Hints: a defined list replaces Alacritty's defaults, so the URL opener is re-declared here
 [[hints.enabled]]
